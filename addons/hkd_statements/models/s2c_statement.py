@@ -32,25 +32,11 @@ class S2CStatement(models.Model):
         return cash_amount
 
     def _get_valid_bills(self, domain_base):
-<<<<<<< HEAD
-        """Trả về danh sách hóa đơn mua hàng hợp lệ:
-        - Đã có số tham chiếu (ref)
-        - Tổng tiền mặt thanh toán < 5,000,000
-        """
-=======
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
         bills = self.env['account.move'].search(
             [('move_type', '=', 'in_invoice')] + domain_base
         )
         valid = []
         for bill in bills:
-<<<<<<< HEAD
-            has_ref = bill.ref and bill.ref.strip()
-            cash_amount = self._get_cash_payment_amount(bill)
-            paid_amount = bill.amount_total - bill.amount_residual
-            if has_ref and cash_amount < 5_000_000 and paid_amount > 0:
-                valid.append(bill)
-=======
             if not (bill.ref and bill.ref.strip()):
                 continue
 
@@ -66,7 +52,6 @@ class S2CStatement(models.Model):
             if record_amount > 0:
                 valid.append((bill, record_amount))
 
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
         return valid
 
     @api.model
@@ -94,29 +79,17 @@ class S2CStatement(models.Model):
 
         # ─── 2. Chi phí ───────────────────────────────────────
         valid_bills = self._get_valid_bills(domain_base)
-<<<<<<< HEAD
-        total_expense = sum(b.amount_total for b in valid_bills)
-
-        seq = 2
-        for bill in valid_bills:
-            paid_amount = bill.amount_total - bill.amount_residual  # ← thực trả
-=======
         total_expense = sum(amount for _, amount in valid_bills)
 
         seq = 2
         for bill, record_amount in valid_bills:
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
             vals.append({
                 'sequence': seq,
                 'so_hieu': bill.ref or bill.name,
                 'date': bill.invoice_date,
                 'dien_giai': f"Mua hàng của {bill.partner_id.name} theo hóa đơn {bill.ref or bill.name}",
                 'partner_id': bill.partner_id.id,
-<<<<<<< HEAD
-                'amount': paid_amount,  # ← thay amount_total
-=======
                 'amount': record_amount,
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                 'move_id': bill.id,
             })
             seq += 1

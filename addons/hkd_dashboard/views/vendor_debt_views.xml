@@ -5,28 +5,15 @@
         <field name="model">vendor.debt.dashboard</field>
         <field name="arch" type="xml">
             <form string="Công nợ" class="hkd_dashboard">
-<<<<<<< HEAD
-                <header>
-                    <button name="action_refresh" type="object" string="Làm mới" class="btn-primary"/>
-                </header>
-
-                <sheet>
-                    <div class="hkd-hero-banner mb-3 debt-banner">
-                        <div>
-                            <h1>Công nợ nhà cung cấp &amp; tiểu thương</h1>
-=======
                 <sheet>
                     <div class="hkd-hero-banner mb-3 debt-banner">
                         <div>
                             <h1>Công nợ Nhà cung cấp &amp; Tiểu thương</h1>
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                             <div class="hkd-hero-subtitle">Theo dõi khoản phải trả, hóa đơn quá hạn và PO chưa xử lý.</div>
                         </div>
                     </div>
 
                     <field name="currency_id" invisible="1"/>
-<<<<<<< HEAD
-=======
                     <div class="hkd-filter-card mb-3">
                         <div class="hkd-section-title"><i class="fa fa-calendar"/> Khoảng thời gian</div>
                         <div class="hkd-filter-bar">
@@ -34,7 +21,6 @@
                             <field name="date_to"/>
                         </div>
                     </div>
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                     <div style="display:none;">
                         <field name="chart_debt_by_vendor"/>
                         <field name="chart_overdue_vs_notdue"/>

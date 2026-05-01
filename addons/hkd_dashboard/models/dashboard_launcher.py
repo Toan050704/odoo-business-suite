@@ -42,15 +42,9 @@ class DashboardLauncher(models.TransientModel):
     )
 
     expense_invalid_total = fields.Monetary(
-<<<<<<< HEAD
-    string='Chi phí không hợp lệ',
-    currency_field='currency_id',
-    compute='_compute_summary_totals',
-=======
         string='Chi phí không hợp lệ',
         currency_field='currency_id',
         compute='_compute_summary_totals',
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
     )
 
     net_result = fields.Monetary(
@@ -97,11 +91,7 @@ class DashboardLauncher(models.TransientModel):
 
     @api.model
     def _default_display_name(self):
-<<<<<<< HEAD
-        return _('Trung tâm Báo cáo & Thống kê Hộ Kinh Doanh')
-=======
         return _('Báo cáo & Thống kê Thuế Hộ Kinh Doanh')
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -111,11 +101,7 @@ class DashboardLauncher(models.TransientModel):
         return super().create(vals_list)
 
     def name_get(self):
-<<<<<<< HEAD
-        label = _('Trung tâm Báo cáo & Thống kê Hộ Kinh Doanh')
-=======
         label = _('Báo cáo & Thống kê Thuế Hộ Kinh Doanh')
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
         return [(rec.id, label) for rec in self]
 
     @api.constrains('date_from', 'date_to')
@@ -136,25 +122,12 @@ class DashboardLauncher(models.TransientModel):
     def _compute_summary_totals(self):
         for rec in self:
             rec.currency_id = rec.env.company.currency_id
-<<<<<<< HEAD
-            
-            # Chỉ lấy hóa đơn bán hàng (out_invoice)
-=======
 
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
             domain_invoice = [('state', '=', 'posted'), ('move_type', '=', 'out_invoice')]
             if rec.date_from:
                 domain_invoice.append(('invoice_date', '>=', rec.date_from))
             if rec.date_to:
                 domain_invoice.append(('invoice_date', '<=', rec.date_to))
-<<<<<<< HEAD
-            
-            invoices = rec.env['account.move'].search(domain_invoice)
-            rec.revenue_total = sum(invoices.mapped('amount_total'))
-            
-            rec.expense_total, rec.expense_invalid_total = rec._compute_cost_of_goods_sold()
-            rec.net_result = rec.revenue_total - rec.expense_total  # chỉ trừ chi phí hợp lệ
-=======
 
             invoices = rec.env['account.move'].search(domain_invoice)
             rec.revenue_total = sum(invoices.mapped('amount_total'))
@@ -178,7 +151,6 @@ class DashboardLauncher(models.TransientModel):
             if counterpart.journal_id.type == 'cash':
                 cash_amount += partial.amount
         return cash_amount
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
     def _compute_cost_of_goods_sold(self):
         self.ensure_one()
@@ -193,16 +165,6 @@ class DashboardLauncher(models.TransientModel):
 
         bills = self.env['account.move'].search(domain)
 
-<<<<<<< HEAD
-        valid_bills   = bills.filtered(lambda m: m.ref and m.ref.strip())    # có ref
-        invalid_bills = bills.filtered(lambda m: not m.ref or not m.ref.strip())  # không có ref
-
-        valid_total   = sum(valid_bills.mapped('amount_total'))
-        invalid_total = sum(invalid_bills.mapped('amount_total'))
-
-        return valid_total, invalid_total
-
-=======
         valid_total = 0.0
         invalid_total = 0.0
 
@@ -229,7 +191,6 @@ class DashboardLauncher(models.TransientModel):
     #     threshold = 5_000_000
     #     return float(move.amount_total or 0.0) >= threshold and move.journal_id.type == 'cash'
 
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
     @api.depends('date_from', 'date_to', 'revenue_total', 'expense_total')
     def _compute_tax_comparison(self):
         profit_rate = 15.0
@@ -288,11 +249,6 @@ class DashboardLauncher(models.TransientModel):
             self._company_domain_leaf(),
         ]
 
-<<<<<<< HEAD
-    def _open_account_move_lines(self, title, extra_domain, extra_context=None):
-        self.ensure_one()
-        domain = self._move_line_period_domain() + list(extra_domain)
-=======
     def _open_account_move_list(self, title, extra_domain, extra_context=None):
         self.ensure_one()
         domain = [
@@ -302,49 +258,31 @@ class DashboardLauncher(models.TransientModel):
             domain.append(('invoice_date', '>=', self.date_from))
         if self.date_to:
             domain.append(('invoice_date', '<=', self.date_to))
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
         ctx = dict(self.env.context)
         if extra_context:
             ctx.update(extra_context)
         return {
             'type': 'ir.actions.act_window',
             'name': title,
-<<<<<<< HEAD
-            'res_model': 'account.move.line',
-            'view_mode': 'graph,pivot,tree',
-=======
             'res_model': 'account.move',
             'view_mode': 'tree,form,pivot,graph',
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
             'domain': domain,
             'context': ctx,
         }
 
     def action_open_revenue(self):
         self.ensure_one()
-<<<<<<< HEAD
-        return self._open_account_move_lines(
-            _('Doanh thu (theo sổ cái)'),
-            [('account_id.internal_group', '=', 'income')],
-=======
         return self._open_account_move_list(
             _('Doanh thu'),
             [('move_type', '=', 'out_invoice')],
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
         )
 
     def action_open_expense(self):
         self.ensure_one()
-<<<<<<< HEAD
-        return self._open_account_move_lines(
-            _('Chi phí (theo sổ cái)'),
-            [('account_id.internal_group', '=', 'expense')],
-=======
         return self._open_account_move_list(
             _('Chi phí hợp lệ'),
             [
                 ('move_type', '=', 'in_invoice'),
                 ('ref', '!=', False),
             ],
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
         )

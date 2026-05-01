@@ -14,26 +14,13 @@
                     groups="group_hkd_owner"
                     sequence="10"/>
 
-<<<<<<< HEAD
-            <!-- Financial Statements -->
-            <menuitem   id="menu_financial_statements"
-                        name="Báo cáo Tài chính"
-=======
             <!-- Tax Statements -->
             <menuitem   id="menu_statements"
                         name="Báo cáo Thuế"
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                         parent="menu_reports"
                         sequence="10"/>
             
                 <menuitem   id="menu_hkd_dashboard_hub"
-<<<<<<< HEAD
-                            name="Tổng quan Tài chính"
-                            parent="menu_financial_statements"
-                            action="hkd_dashboard.action_dashboard_launcher"
-                            sequence="10"/>
-
-=======
                             name="Báo cáo &amp; Thống kê Thuế"
                             parent="menu_statements"
                             action="hkd_dashboard.action_dashboard_launcher"
@@ -63,7 +50,6 @@
                             action="hkd_statements.action_statements_wizard_s2e"
                             sequence="50"/>
 
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
             <!-- Debt Statements -->
             <menuitem   id="menu_debt_statements"
                         name="Báo cáo Công nợ"
@@ -75,40 +61,7 @@
                             parent="menu_debt_statements"
                             action="hkd_dashboard.action_vendor_debt_dashboard"
                             sequence="10"/>
-<<<<<<< HEAD
-
-            <!-- Tax Statements -->
-            <menuitem   id="menu_statements"
-                        name="Báo cáo thuế"
-                        parent="menu_reports"
-                        sequence="30"/>
-    
-                <menuitem   id="menu_s2b_statements"
-                            name="Sổ S2B-HKD"
-                            parent="menu_statements"
-                            action="hkd_statements.action_statements_wizard_s2b"
-                            sequence="10"/>
-
-                <menuitem   id="menu_s2c_statements"
-                            name="Sổ S2C-HKD"
-                            parent="menu_statements"
-                            action="hkd_statements.action_statements_wizard_s2c"
-                            sequence="20"/>
-
-                <menuitem   id="menu_s2d_statements"
-                            name="Sổ S2D-HKD"
-                            parent="menu_statements"
-                            action="hkd_statements.action_statements_wizard_s2d"
-                            sequence="30"/>
-
-                <menuitem   id="menu_s2e_statements"
-                            name="Sổ S2E-HKD"
-                            parent="menu_statements"
-                            action="hkd_statements.action_statements_wizard_s2e"
-                            sequence="40"/>
-=======
                 
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
         <!-- Partners -->
         <menuitem   id="menu_partners"
@@ -168,21 +121,13 @@
                         sequence="20"/>
 
                 <menuitem   id="menu_pos_products"
-<<<<<<< HEAD
-                            name="Phiên POS"
-=======
                             name="Bán hàng POS"
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                             parent="menu_pos"
                             action="point_of_sale.action_pos_config_kanban"
                             sequence="10"/>
 
                 <menuitem   id="menu_pos_orders"
-<<<<<<< HEAD
-                            name="Đơn bán"
-=======
                             name="Đơn hàng"
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                             parent="menu_pos"
                             action="point_of_sale.action_pos_pos_form"
                             sequence="20"/>
@@ -256,31 +201,19 @@
                     sequence="20"/>
 
                 <menuitem id="menu_mrp_bom"
-<<<<<<< HEAD
-                        name="Công thức sản phẩm"
-=======
                         name="Công thức Sản phẩm"
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                         parent="menu_product_manufacturing"
                         action="action_mrp_bom"
                         sequence="10"/>
 
                 <menuitem id="menu_mrp_production"
-<<<<<<< HEAD
-                        name="Sản xuất sản phẩm"
-=======
                         name="Sản xuất Thành phẩm"
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                         parent="menu_product_manufacturing"
                         action="action_mrp_production"
                         sequence="20"/>
 
                 <menuitem id="menu_stock_scrap"
-<<<<<<< HEAD
-                        name="Hủy sản phẩm"
-=======
                         name="Hủy Sản phẩm"
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                         parent="menu_product_manufacturing"
                         action="stock.action_stock_scrap"
                         sequence="30"/>

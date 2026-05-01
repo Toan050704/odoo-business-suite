@@ -5,12 +5,6 @@ from odoo import api, fields, models, _
 
 class VendorDebtDashboard(models.TransientModel):
     _name = 'vendor.debt.dashboard'
-<<<<<<< HEAD
-    _description = 'Công nợ nhà cung cấp & tiểu thương'
-    _rec_name = 'name'
-
-    name = fields.Char(default='Công nợ nhà cung cấp')
-=======
     _description = 'Công nợ Nhà cung cấp & Tiểu thương'
     _rec_name = 'name'
 
@@ -25,7 +19,6 @@ class VendorDebtDashboard(models.TransientModel):
         required=True,
         default=fields.Date.today,
     )
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
     # KPI
     total_debt = fields.Monetary(
@@ -86,29 +79,18 @@ class VendorDebtDashboard(models.TransientModel):
         return rec
 
     # KPI
-<<<<<<< HEAD
-    @api.depends()
-=======
     @api.depends('date_from', 'date_to')
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
     def _compute_kpi(self):
         today = fields.Date.today()
 
         for rec in self:
             rec.currency_id = rec.env.company.currency_id
 
-<<<<<<< HEAD
-            invoices = rec.env['account.move'].search([
-=======
             invoices_domain = [
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                 ('move_type', 'in', ['in_invoice', 'in_refund']),
                 ('state', '=', 'posted'),
                 ('payment_state', 'in', ['not_paid', 'partial']),
                 ('company_id', 'in', rec.env.companies.ids),
-<<<<<<< HEAD
-            ])
-=======
             ]
             if rec.date_from:
                 invoices_domain.append(('invoice_date', '>=', rec.date_from))
@@ -116,7 +98,6 @@ class VendorDebtDashboard(models.TransientModel):
                 invoices_domain.append(('invoice_date', '<=', rec.date_to))
 
             invoices = rec.env['account.move'].search(invoices_domain)
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
             supplier_invoices = invoices.filtered(lambda m: m.partner_id.supplier_rank > 0)
             trader_invoices = invoices.filtered(lambda m: m.partner_id.supplier_rank <= 0)
@@ -144,27 +125,16 @@ class VendorDebtDashboard(models.TransientModel):
             rec.po_pending = sum(pos.mapped('amount_total'))
 
     # CHART
-<<<<<<< HEAD
-    @api.depends()
-=======
     @api.depends('date_from', 'date_to')
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
     def _compute_chart_data(self):
         today = fields.Date.today()
 
         for rec in self:
-<<<<<<< HEAD
-            invoices = rec.env['account.move'].search([
-=======
             invoices_domain = [
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
                 ('move_type', 'in', ['in_invoice', 'in_refund']),
                 ('state', '=', 'posted'),
                 ('payment_state', 'in', ['not_paid', 'partial']),
                 ('company_id', 'in', rec.env.companies.ids),
-<<<<<<< HEAD
-            ])
-=======
             ]
             if rec.date_from:
                 invoices_domain.append(('invoice_date', '>=', rec.date_from))
@@ -172,7 +142,6 @@ class VendorDebtDashboard(models.TransientModel):
                 invoices_domain.append(('invoice_date', '<=', rec.date_to))
 
             invoices = rec.env['account.move'].search(invoices_domain)
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
             supplier_map = {}
             trader_map = {}
@@ -217,18 +186,11 @@ class VendorDebtDashboard(models.TransientModel):
         # Xóa dữ liệu cũ
         self.vendor_line_ids.unlink()
 
-<<<<<<< HEAD
-        invoices = self.env['account.move'].search([
-=======
         domain = [
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
             ('move_type', 'in', ['in_invoice', 'in_refund']),
             ('state', '=', 'posted'),
             ('payment_state', 'in', ['not_paid', 'partial']),
             ('company_id', 'in', self.env.companies.ids),
-<<<<<<< HEAD
-        ], order='invoice_date_due asc')
-=======
         ]
         if self.date_from:
             domain.append(('invoice_date', '>=', self.date_from))
@@ -236,7 +198,6 @@ class VendorDebtDashboard(models.TransientModel):
             domain.append(('invoice_date', '<=', self.date_to))
 
         invoices = self.env['account.move'].search(domain, order='invoice_date_due asc')
->>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
 
         lines = []
         for inv in invoices:
