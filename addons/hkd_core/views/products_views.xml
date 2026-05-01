@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_product_packaging" model="ir.actions.act_window">
+        <field name="name">Bao bì sản phẩm</field>
+        <field name="res_model">product.packaging</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_product_pricelist" model="ir.actions.act_window">
+        <field name="name">Bảng giá</field>
+        <field name="res_model">product.pricelist</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

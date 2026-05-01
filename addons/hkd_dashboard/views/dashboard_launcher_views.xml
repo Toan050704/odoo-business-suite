@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dashboard_launcher_form" model="ir.ui.view">
+        <field name="name">dashboard.launcher.form</field>
+        <field name="model">dashboard.launcher</field>
+        <field name="arch" type="xml">
+            <form string="Trung tâm báo cáo HKD" class="hkd_dashboard">
+                <sheet>
+                    <div class="hkd-hero-banner mb-3">
+                        <div>
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="hkd-filter-card mb-3">
+                        <div class="hkd-section-title"><i class="fa fa-calendar"/> Khoảng thời gian</div>
+                        <div class="hkd-filter-bar">
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field name="currency_id" invisible="1"/>
+                        </div>
+                    </div>
+
+                    <div class="hkd-kpi-row">
+<<<<<<< HEAD
+                        <div class="hkd-kpi-card primary">
+                            <div class="hkd-kpi-icon bg-primary-soft"><i class="fa fa-line-chart"/></div>
+                            <div class="kpi-title">Doanh thu</div>
+=======
+                        <div class="hkd-kpi-card primary hkd-clickable-card">
+                            <button name="action_open_revenue" type="object" class="hkd-card-action" aria-label="Xem chi tiết doanh thu"/>
+                            <div class="hkd-kpi-icon bg-primary-soft"><i class="fa fa-line-chart"/></div>
+                            <div class="kpi-title">Doanh thu tính thuế</div>
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                            <div class="kpi-value">
+                                <field name="revenue_total" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Tổng doanh thu theo kỳ lọc</div>
+                            <div class="hkd-action-link mt-2">
+                                <button name="action_open_revenue" type="object"
+<<<<<<< HEAD
+                                        class="btn btn-outline-primary btn-sm w-100">
+=======
+                                        class="btn btn-outline-primary btn-sm w-100 hkd-card-hint-btn">
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                                    Xem chi tiết
+                                </button>
+                            </div>
+                        </div>
+
+<<<<<<< HEAD
+                        <div class="hkd-kpi-card danger">
+=======
+                        <div class="hkd-kpi-card danger hkd-clickable-card">
+                            <button name="action_open_expense" type="object" class="hkd-card-action" aria-label="Xem chi tiết chi phí hợp lệ"/>
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                            <div class="hkd-kpi-icon bg-danger-soft"><i class="fa fa-shopping-cart"/></div>
+                            <div class="kpi-title">Chi phí hợp lệ</div>
+                            <div class="kpi-value">
+                                <field name="expense_total" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Tổng chi phí hợp lệ theo kỳ lọc</div>
+                            <div class="hkd-action-link mt-2">
+                                <button name="action_open_expense" type="object"
+<<<<<<< HEAD
+                                        class="btn btn-outline-danger btn-sm w-100">
+=======
+                                        class="btn btn-outline-danger btn-sm w-100 hkd-card-hint-btn">
+                                    Xem chi tiết
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="hkd-kpi-card warning">
+                            <div class="hkd-kpi-icon bg-warning-soft"><i class="fa fa-ban"/></div>
+                            <div class="kpi-title">Chi phí không hợp lệ</div>
+                            <div class="kpi-value">
+                                <field name="expense_invalid_total" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Tổng chi phí không hợp lệ theo kỳ lọc</div>
+                            <div class="hkd-action-link mt-2">
+                                <button name="action_open_expense" type="object"
+                                        class="btn btn-outline-warning btn-sm w-100">
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                                    Xem chi tiết
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="hkd-kpi-card success">
+                            <div class="hkd-kpi-icon bg-success-soft"><i class="fa fa-signal"/></div>
+<<<<<<< HEAD
+                            <div class="kpi-title">Lợi nhuận</div>
+=======
+                            <div class="kpi-title">Lợi nhuận tính thuế</div>
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                            <div class="kpi-value">
+                                <field name="net_result" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Doanh thu trừ chi phí hợp lệ</div>
+                        </div>
+
+                        <!-- <div class="hkd-kpi-card warning">
+                            <div class="hkd-kpi-icon bg-warning-soft"><i class="fa fa-balance-scale"/></div>
+                            <div class="kpi-title">Thuế (DT)</div>
+                            <div class="kpi-value">
+                                <field name="tax_revenue_total" widget="monetary"
+                                       options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Tổng thuế theo doanh thu</div>
+                        </div> -->
+                    </div>
+
+                    <div class="hkd-chart-row">
+<<<<<<< HEAD
+                        <div class="hkd-chart-box">
+                            <h3>Thuế theo doanh thu</h3>
+=======
+                        <div class="hkd-chart-box hkd-tax-panel">
+                            <h3 class="hkd-tax-title">Thuế theo doanh thu</h3>
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                            <div class="hkd-tax-grid">
+                                <div class="hkd-tax-metric">
+                                    <div class="hkd-kpi-label">Tổng thuế TNCN phải nộp</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="tax_revenue_tncn" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+                                <div class="hkd-tax-metric">
+                                    <div class="hkd-kpi-label">Tổng thuế GTGT phải nộp</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="tax_revenue_vat" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+<<<<<<< HEAD
+                                <div class="hkd-tax-metric">
+=======
+                            </div>
+                            <div class="hkd-tax-total-wrap">
+                                <div class="hkd-tax-metric hkd-tax-total">
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                                    <div class="hkd-kpi-label">Tổng thuế</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="tax_revenue_total" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<<<<<<< HEAD
+                        <div class="hkd-chart-box">
+                            <h3>Thuế theo lợi nhuận</h3>
+=======
+                        <div class="hkd-chart-box hkd-tax-panel">
+                            <h3 class="hkd-tax-title">Thuế theo lợi nhuận</h3>
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                            <div class="hkd-tax-grid">
+                                <div class="hkd-tax-metric">
+                                    <div class="hkd-kpi-label">Tổng thuế TNCN phải nộp</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="tax_profit_tncn" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+                                <div class="hkd-tax-metric">
+                                    <div class="hkd-kpi-label">Tổng thuế GTGT phải nộp</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="tax_profit_vat" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+<<<<<<< HEAD
+                                <div class="hkd-tax-metric">
+=======
+                            </div>
+                            <div class="hkd-tax-total-wrap">
+                                <div class="hkd-tax-metric hkd-tax-total">
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+                                    <div class="hkd-kpi-label">Tổng thuế</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="tax_profit_total" widget="monetary"
+                                               options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hkd-result-box mt-3">
+                        <field name="tax_compare_note" nolabel="1"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dashboard_launcher" model="ir.actions.act_window">
+        <field name="name">Trung tâm báo cáo HKD</field>
+        <field name="res_model">dashboard.launcher</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_dashboard_launcher_form"/>
+        <field name="target">current</field>
+    </record>
+</odoo>

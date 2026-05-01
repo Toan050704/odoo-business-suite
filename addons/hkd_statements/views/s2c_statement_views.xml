@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_s2c_tree" model="ir.ui.view">
+        <field name="name">s2c.statement.tree</field>
+        <field name="model">s2c.statement</field>
+        <field name="arch" type="xml">
+            <tree js_class="s2c_list" class="s2c_excel" create="false" delete="false" edit="false"
+                decoration-bf="dien_giai in ['Chênh lệch', 'Tổng số thuế TNCN phải nộp', 'Tổng doanh thu bán hàng hóa, dịch vụ']">
+
+                <field name="currency_id" invisible="1"/>
+
+                <field name="so_hieu"/>
+                <field name="date"/>
+                <field name="dien_giai"/>
+                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_s2c_search" model="ir.ui.view">
+        <field name="name">s2c.statement.search</field>
+        <field name="model">s2c.statement</field>
+        <field name="arch" type="xml">
+            <search>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_s2c_statement" model="ir.actions.act_window">
+        <field name="name">S2c-HKD: Sổ chi tiết doanh thu, chi phí</field>
+        <field name="res_model">s2c.statement</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_s2c_search"/>
+    </record>
+</odoo>
+

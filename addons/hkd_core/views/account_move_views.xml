@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="action_sale_invoice" model="ir.actions.act_window">
+            <field name="name">Hóa đơn bán hàng (SO)</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[
+                ('move_type', '=', 'out_invoice'),
+                ('line_ids.sale_line_ids', '!=', False)
+            ]</field>
+            <field name="context">{'default_move_type': 'out_invoice'}</field>
+        </record>
+
+        <record id="action_pos_invoice" model="ir.actions.act_window">
+            <field name="name">Hóa đơn bán hàng (POS)</field>
+            <field name="res_model">account.move</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[
+                ('move_type', '=', 'out_invoice'),
+                ('pos_order_ids', '!=', False)
+            ]</field>
+            <field name="context">{'default_move_type': 'out_invoice'}</field>
+        </record>
+</odoo>

@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_s2e_statement_tree" model="ir.ui.view">
+        <field name="name">s2e.statement.tree</field>
+        <field name="model">s2e.statement</field>
+        <field name="arch" type="xml">
+            <tree js_class="s2e_list" class="s2e_excel" create="false" delete="false" edit="false"
+                decoration-bf="dien_giai in ['Tổng tiền thu vào trong kỳ', 'Tổng tiền chi ra trong kỳ', 'Tổng tiền gửi vào trong kỳ', 'Tổng tiền rút ra trong kỳ', 
+                                            'Tiền mặt đầu kỳ', 'Tiền mặt cuối kỳ', 'Tiền gửi đầu kỳ', 'Tiền gửi cuối kỳ']">
+                                            
+                <field name="currency_id" invisible="1"/>
+
+                <field name="so_hieu" string="Số chứng từ"/>
+                <field name="date" string="Ngày"/>
+                <field name="dien_giai" string="Diễn giải"/>
+                <field name="thu" string="Thu / Gửi vào" widget="monetary" class="text-end"/>
+                <field name="chi" string="Chi / Rút ra" widget="monetary" class="text-end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_s2e_statement_search" model="ir.ui.view">
+        <field name="name">s2e.statement.search</field>
+        <field name="model">s2e.statement</field>
+        <field name="arch" type="xml">
+            <search>
+
+            </search>
+        </field>
+    </record>
+
+    <record id="action_s2e_statement" model="ir.actions.act_window">
+        <field name="name">S2e-HKD: Sổ chi tiết tiền mặt, tiền gửi ngân hàng</field>
+        <field name="res_model">s2e.statement</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_s2e_statement_search"/>
+    </record>
+</odoo>

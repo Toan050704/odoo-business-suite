@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data noupdate="1">
+
+    <record id="product_tmpl_banh_sandwich_lat" model="product.template">
+        <field name="name">BÁNH SANDWICH LẠT</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_sandwich_ngot" model="product.template">
+        <field name="name">BÁNH SANDWICH NGỌT</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_cao_cap" model="product.template">
+        <field name="name">BÁNH CAO CẤP</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_bo_xe" model="product.template">
+        <field name="name">BÁNH BƠ XẺ</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_lot_da" model="product.template">
+        <field name="name">BÁNH LỘT DA</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_bao" model="product.template">
+        <field name="name">BÁNH BAO</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_bong_lan_cuon" model="product.template">
+        <field name="name">BÁNH BÔNG LAN CUỘN</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_long_den" model="product.template">
+        <field name="name">BÁNH LỒNG ĐÈN</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_hoa_cuc" model="product.template">
+        <field name="name">BÁNH HOA CÚC</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_qui_bo" model="product.template">
+        <field name="name">BÁNH QUI BƠ</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_mi_o" model="product.template">
+        <field name="name">BÁNH MÌ Ổ</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+    <record id="product_tmpl_banh_trung_thu_thap_cam" model="product.template">
+        <field name="name">BÁNH TRUNG THU THẬP CẨM</field>
+        <field name="detailed_type">product</field>
+        <field name="uom_id" ref="uom_cai"/>
+        <field name="uom_po_id" ref="uom_cai"/>
+        <field name="list_price">0</field>
+        <field name="standard_price">0</field>
+        <field name="categ_id" ref="categ_thanh_pham"/>
+        <field name="hkd_policy_id" ref="hkd_tax_policy.business_activity_manufacturing_transport_with_goods"/>
+        <field name="hkd_tax_id" ref="hkd_tax_policy.tax_mfg_vat3_pit1_5_27"/>
+        <field name="taxes_id" eval="[(6, 0, [ref('hkd_tax_policy.tax_mfg_vat3_pit1_5_27')])]"/>
+        <field name="available_in_pos">True</field>
+    </record>
+
+</data>
+</odoo>

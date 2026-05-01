@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acess_hkd_tax_policy,hkd_tax_policy.access_hkd_tax_policy,model_hkd_tax_policy,,1,1,1,1
+acess_account_tax,hkd_tax_policy.access_account_tax,model_account_tax,,1,1,1,1
+

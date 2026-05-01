@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="business_activity_distribution_goods" model="hkd.tax.policy">
+            <field name="name">Phân phối, cung cấp hàng hóa</field>
+            <field name="sequence">1</field>
+            <field name="active" eval="True"/>
+            <field name="description">Hoạt động phân phối, bán buôn, bán lẻ và cung cấp hàng hóa cho khách hàng.</field>
+        </record>
+
+        <record id="business_activity_service_construction_no_material" model="hkd.tax.policy">
+            <field name="name">Dịch vụ, xây dựng không bao thầu nguyên vật liệu</field>
+            <field name="sequence">2</field>
+            <field name="active" eval="True"/>
+            <field name="description">Hoạt động cung cấp dịch vụ hoặc xây dựng không bao gồm phần nguyên vật liệu do bên thi công cung cấp.</field>
+        </record>
+
+        <record id="business_activity_manufacturing_transport_with_goods" model="hkd.tax.policy">
+            <field name="name">Sản xuất, vận tải, dịch vụ có gắn với hàng hóa, xây dựng có bao thầu nguyên vật liệu</field>
+            <field name="sequence">3</field>
+            <field name="active" eval="True"/>
+            <field name="description">Hoạt động sản xuất, vận tải, dịch vụ gắn với hàng hóa hoặc xây dựng có bao gồm nguyên vật liệu.</field>
+        </record>
+
+        <record id="business_activity_other" model="hkd.tax.policy">
+            <field name="name">Hoạt động kinh doanh khác</field>
+            <field name="sequence">4</field>
+            <field name="active" eval="True"/>
+            <field name="description">Các hoạt động kinh doanh khác không thuộc các nhóm ngành nghề nêu trên.</field>
+        </record>
+
+    </data>
+</odoo>

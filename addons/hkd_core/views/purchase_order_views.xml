@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_purchase_rfq" model="ir.actions.act_window">
+        <field name="name">Đề nghị mua hàng</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state', 'in', ['draft', 'sent'])]</field>
+    </record>
+
+    <record id="action_purchase_order" model="ir.actions.act_window">
+        <field name="name">Đơn mua hàng</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('state', 'in', ['purchase', 'done'])]</field>
+    </record>
+</odoo>

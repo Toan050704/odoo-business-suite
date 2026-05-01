@@ -1,0 +1,10 @@
+/* Nền POS phẳng, không gradient/hình nền */
+.pos {
+    background-color: #f4f5f7 !important;
+    background-image: none !important;
+}
+
+.pos .pos-content .window,
+.pos .pos-content .screens {
+    background-color: transparent;
+}

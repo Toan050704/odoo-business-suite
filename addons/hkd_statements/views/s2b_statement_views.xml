@@ -1,0 +1,39 @@
+<odoo>
+    <record id="view_s2b_tree" model="ir.ui.view">
+        <field name="name">s2b.statement.tree</field>
+        <field name="model">s2b.statement</field>
+        <field name="arch" type="xml">
+            <tree js_class="s2b_list" class="s2b_excel" create="false" delete="false" edit="false">
+
+                <field name="currency_id" invisible="1"/>
+
+                <field name="so_hieu"/>
+                <field name="date"/>
+                <field name="dien_giai"/>
+                <field name="amount" sum="Tổng doanh thu" widget="monetary"/>
+                <field name="vat" sum="Tổng thuế GTGT" widget="monetary"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_s2b_statement_search" model="ir.ui.view">
+        <field name="name">s2b.statement.search</field>
+        <field name="model">s2b.statement</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- <group expand="0" string="Group By">
+                    <filter string="Theo Quý" 
+                            name="group_by_quarter" 
+                            context="{'group_by': 'date:quarter'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
+    <record id="action_s2b_statement" model="ir.actions.act_window">
+        <field name="name">S2b-HKD: Sổ doanh thu bán hàng hóa, dịch vụ</field>
+        <field name="res_model">s2b.statement</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_s2b_statement_search"/>
+    </record>
+</odoo>

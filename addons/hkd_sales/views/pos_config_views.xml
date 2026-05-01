@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_config_form_immediate" model="ir.ui.view">
+        <field name="name">pos.config.form.immediate.invoice</field>
+        <field name="model">pos.config</field>
+        <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+        <field name="arch" type="xml">
+            <!-- iface_tax_included không nằm trên form PoS 16 chuẩn; other_devices có trên form chính. -->
+            <xpath expr="//field[@name='other_devices']" position="after">
+                <field name="immediate_invoice"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

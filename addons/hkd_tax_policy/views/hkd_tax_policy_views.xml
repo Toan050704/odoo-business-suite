@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_hkd_tax_policy_tree" model="ir.ui.view">
+            <field name="name">hkd.tax.policy.tree</field>
+            <field name="model">hkd.tax.policy</field>
+            <field name="arch" type="xml">
+                <tree string="Nhóm ngành nghề thuế" default_order="sequence,id">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name" string="Danh mục"/>
+                    <field name="tax_count" string="Số thuế"/>
+                    <field name="active" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hkd_tax_policy_form" model="ir.ui.view">
+            <field name="name">hkd.tax.policy.form</field>
+            <field name="model">hkd.tax.policy</field>
+            <field name="arch" type="xml">
+                <form string="Nhóm ngành nghề thuế">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="tax_count" string="Số thuế" readonly="1"/>
+                                <field name="active"/>
+                                <field name="sequence"/>
+                            </group>
+                        </group>
+                        <group string="Mô tả">
+                            <field name="description" placeholder="Mô tả chi tiết ngành/mức áp dụng…"/>
+                        </group>
+                        <group string="Nhóm ngành nghề thuế">
+                            <field name="tax_ids" nolabel="1" colspan="2" options="{'no_create': True, 'no_edit': True, 'no_delete': True}">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="amount" string="GTGT (%)"/>
+                                    <field name="hkd_pit_rate" string="TNCN (%)"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_hkd_tax_policy_search" model="ir.ui.view">
+            <field name="name">hkd.tax.policy.search</field>
+            <field name="model">hkd.tax.policy</field>
+            <field name="arch" type="xml">
+                <search string="Nhóm ngành nghề thuế">
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_hkd_tax_policy" model="ir.actions.act_window">
+            <field name="name">Nhóm ngành nghề thuế</field>
+            <field name="res_model">hkd.tax.policy</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_hkd_tax_policy_search"/>
+        </record>
+
+        <menuitem id="menu_hkd_tax_policy"
+                  name="Nhóm ngành nghề thuế"
+                  parent="account.menu_finance_configuration"
+                  action="action_hkd_tax_policy"
+                  sequence="78"/>
+
+    </data>
+</odoo>

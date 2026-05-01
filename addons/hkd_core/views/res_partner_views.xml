@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="action_menu_customers" model="ir.actions.act_window">
+            <field name="name">Tiểu thương</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('customer_rank', '&gt;', 0)]</field>
+            <field name="context">{
+                'default_customer_rank': 1,
+                'search_default_hkd_pos_walkin': 1                
+            }</field>
+            <field name="views" eval="[
+            (ref('base.res_partner_kanban_view'), 'kanban'),
+            (ref('base.view_partner_tree'), 'tree'),
+            (False, 'form'),
+        ]"/>
+        </record>
+
+        <record id="action_menu_vendors" model="ir.actions.act_window">
+            <field name="name">Nhà cung cấp</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('supplier_rank', '&gt;', 0)]</field>
+            <field name="context">{'default_supplier_rank': 1}</field>
+            <field name="views" eval="[
+            (ref('base.res_partner_kanban_view'), 'kanban'),
+            (ref('base.view_partner_tree'), 'tree'),
+            (False, 'form'),
+        ]"/>
+        </record>
+</odoo>

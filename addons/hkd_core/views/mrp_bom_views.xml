@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_mrp_bom" model="ir.actions.act_window">
+      <field name="name">Công thức sản phẩm</field>
+      <field name="res_model">mrp.bom</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_mrp_production" model="ir.actions.act_window">
+<<<<<<< HEAD
+        <field name="name">Sản xuất sản phẩm</field>
+=======
+        <field name="name">Sản xuất Thành phẩm</field>
+>>>>>>> 36ba606abda1a4370f443768e62d6c4f33df2425
+        <field name="res_model">mrp.production</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
