@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Menu -->
+        <menuitem   id="menu_hkd_root"
+                    name="HKD"
+                    sequence="10"/>
+
+        <!-- Report -->
+        <menuitem   id="menu_reports"
+                    name="Báo cáo &amp; Thống kê"
+                    parent="menu_hkd_root"
+                    groups="group_hkd_owner"
+                    sequence="10"/>
+
+            <!-- Tax Statements -->
+            <menuitem   id="menu_statements"
+                        name="Báo cáo Thuế"
+                        parent="menu_reports"
+                        sequence="10"/>
+            
+                <menuitem   id="menu_hkd_dashboard_hub"
+                            name="Báo cáo &amp; Thống kê Thuế"
+                            parent="menu_statements"
+                            action="hkd_dashboard.action_dashboard_launcher"
+                            sequence="10"/>
+
+                <menuitem   id="menu_s2b_statements"
+                            name="Sổ S2B-HKD"
+                            parent="menu_statements"
+                            action="hkd_statements.action_statements_wizard_s2b"
+                            sequence="20"/>
+
+                <menuitem   id="menu_s2c_statements"
+                            name="Sổ S2C-HKD"
+                            parent="menu_statements"
+                            action="hkd_statements.action_statements_wizard_s2c"
+                            sequence="30"/>
+
+                <menuitem   id="menu_s2d_statements"
+                            name="Sổ S2D-HKD"
+                            parent="menu_statements"
+                            action="hkd_statements.action_statements_wizard_s2d"
+                            sequence="40"/>
+
+                <menuitem   id="menu_s2e_statements"
+                            name="Sổ S2E-HKD"
+                            parent="menu_statements"
+                            action="hkd_statements.action_statements_wizard_s2e"
+                            sequence="50"/>
+
+            <!-- Debt Statements -->
+            <menuitem   id="menu_debt_statements"
+                        name="Báo cáo Công nợ"
+                        parent="menu_reports"
+                        sequence="20"/>
+
+                <menuitem   id="menu_hkd_vendor_debt"
+                            name="Nhà cung cấp &amp; Tiểu thương"
+                            parent="menu_debt_statements"
+                            action="hkd_dashboard.action_vendor_debt_dashboard"
+                            sequence="10"/>
+                
+
+        <!-- Partners -->
+        <menuitem   id="menu_partners"
+                    name="Quản lý Đối tác"
+                    parent="menu_hkd_root"
+                    groups="group_hkd_owner"
+                    sequence="20"/>
+
+            <menuitem   id="menu_customers"
+                        name="Tiểu thương"
+                        parent="menu_partners"
+                        action="action_menu_customers"
+                        sequence="10"/>
+
+            <menuitem   id="menu_vendors"
+                        name="Nhà cung cấp"
+                        parent="menu_partners"
+                        action="action_menu_vendors"
+                        sequence="20"/>
+
+        <!-- Sales -->
+        <menuitem   id="menu_sales"
+                    name="Quản lý Bán hàng"
+                    parent="menu_hkd_root"
+                    groups="group_hkd_user"
+                    sequence="30"/>
+
+            <!-- Sales Order -->
+                <menuitem   id="menu_so"
+                        name="Bán hàng cho Tiểu thương"
+                        parent="menu_sales"
+                        sequence="10"/>
+
+                        <!-- <menuitem   id="menu_sale_rfq"
+                                        name="Báo giá"
+                                        parent="menu_so"
+                                        action="sale.action_quotations_with_onboarding"
+                                        sequence="10"/> -->
+
+                        <menuitem   id="menu_sale_order"
+                                        name="Đơn hàng"
+                                        parent="menu_so"
+                                        action="sale.action_orders"
+                                        sequence="20"/>
+
+                        <menuitem   id="menu_sale_invoice"
+                                        name="Hóa đơn bán hàng (SO)"
+                                        parent="menu_so"
+                                        action="action_sale_invoice"
+                                        sequence="30"/>
+                
+            
+            <!-- Point Of Sales -->
+            <menuitem   id="menu_pos"
+                        name="Bán hàng tại quầy"
+                        parent="menu_sales"
+                        sequence="20"/>
+
+                <menuitem   id="menu_pos_products"
+                            name="Bán hàng POS"
+                            parent="menu_pos"
+                            action="point_of_sale.action_pos_config_kanban"
+                            sequence="10"/>
+
+                <menuitem   id="menu_pos_orders"
+                            name="Đơn hàng"
+                            parent="menu_pos"
+                            action="point_of_sale.action_pos_pos_form"
+                            sequence="20"/>
+
+                <menuitem   id="menu_pos_sessions"
+                            name="Phiên bán hàng"
+                            parent="menu_pos"
+                            action="point_of_sale.action_pos_session"
+                            sequence="30"/>
+                
+                <menuitem   id="menu_pos_invoice"
+                            name="Hóa đơn bán hàng (POS)"
+                            parent="menu_pos"
+                            action="action_pos_invoice"
+                            sequence="40"/>
+
+        <!-- Purchase -->
+        <menuitem   id="menu_purchases"
+                name="Quản lý Mua hàng"
+                parent="menu_hkd_root"
+                groups="group_hkd_user"
+                sequence="40"/>
+
+                <menuitem   id="menu_purchase_rfq"
+                                name="Đề nghị mua hàng"
+                                parent="menu_purchases"
+                                action="action_purchase_rfq"
+                                sequence="10"/>
+
+                <menuitem   id="menu_purchase_order"
+                                name="Đơn mua hàng"
+                                parent="menu_purchases"
+                                action="action_purchase_order"
+                                sequence="20"/>
+
+                <menuitem   id="menu_purchase_invoice"
+                                name="Hóa đơn mua hàng"
+                                parent="menu_purchases"
+                                action="account.action_move_in_invoice_type"
+                                sequence="30"/>
+        
+        <!-- Products -->
+        <menuitem id="menu_products"
+                name="Quản lý Sản phẩm"
+                parent="menu_hkd_root"
+                groups="group_hkd_owner"
+                sequence="50"/>
+
+            <!-- Sản phẩm -->
+            <menuitem id="menu_product_group"
+                    name="Sản phẩm"
+                    parent="menu_products"
+                    sequence="10"/>
+
+                <menuitem id="menu_product_list"
+                        name="Danh sách Sản phẩm"
+                        parent="menu_product_group"
+                        action="product.product_template_action_all"
+                        sequence="10"/>
+
+                <!-- <menuitem id="menu_product_category"
+                        name="Danh mục Sản phẩm"
+                        parent="menu_product_group"
+                        action="product.product_category_action_form"
+                        sequence="20"/> -->
+
+            <!-- Sản xuất -->
+            <menuitem id="menu_product_manufacturing"
+                    name="Sản xuất"
+                    parent="menu_products"
+                    sequence="20"/>
+
+                <menuitem id="menu_mrp_bom"
+                        name="Công thức Sản phẩm"
+                        parent="menu_product_manufacturing"
+                        action="action_mrp_bom"
+                        sequence="10"/>
+
+                <menuitem id="menu_mrp_production"
+                        name="Sản xuất Thành phẩm"
+                        parent="menu_product_manufacturing"
+                        action="action_mrp_production"
+                        sequence="20"/>
+
+                <menuitem id="menu_stock_scrap"
+                        name="Hủy Sản phẩm"
+                        parent="menu_product_manufacturing"
+                        action="stock.action_stock_scrap"
+                        sequence="30"/>
+
+        <!-- Stock -->
+        <menuitem   id="menu_warehouse"
+                    name="Quản lý Kho"
+                    parent="menu_hkd_root"
+                    groups="group_hkd_user"
+                    sequence="60"/>  
+
+            <menuitem   id="menu_warehouse_in"
+                        name="Nhập kho"
+                        parent="menu_warehouse"
+                        sequence="20"/>
+                
+                <menuitem   id="menu_stock_picking_in"
+                            name="Phiếu nhập kho"
+                            parent="menu_warehouse_in"
+                            action="action_stock_picking_in"
+                            sequence="10"/>
+            
+            <menuitem   id="menu_warehouse_out"
+                        name="Xuất kho"
+                        parent="menu_warehouse"
+                        sequence="30"/>
+
+                <menuitem   id="menu_stock_picking_out"
+                            name="Phiếu xuất kho"
+                            parent="menu_warehouse_out"
+                            action="action_stock_picking_out"
+                            sequence="10"/>
+
+            <menuitem   id="menu_warehouse_stock"
+                        name="Tồn kho"
+                        parent="menu_warehouse"
+                        sequence="10"/>
+
+                <menuitem   id="menu_stock_quant"
+                            name="Tồn kho hiện tại"
+                            parent="menu_warehouse_stock"
+                            action="action_stock_quant"
+                            sequence="10"/>
+                
+                <menuitem   id="menu_stock_move"
+                            name="Lịch sử di chuyển"
+                            parent="menu_warehouse_stock"
+                            action="action_stock_move_lines"
+                            sequence="20"/>
+
+        <!-- Settings -->
+        <menuitem   id="menu_configurations"
+                    name="Cấu hình"
+                    parent="menu_hkd_root"
+                    groups="group_hkd_owner"
+                    sequence="100"/>
+
+            <menuitem   id="menu_res_config_settings"
+                        name="Cài đặt"
+                        parent="menu_configurations"
+                        action="base_setup.action_general_configuration"
+                        sequence="10"/>
+
+            <menuitem  id="menu_taxes"
+                        name="Thuế"
+                        parent="menu_configurations"
+                        sequence="20"/>
+
+                <menuitem   id="menu_hkd_tax_policy"
+                            name="Thuế"
+                            parent="menu_taxes"
+                            action="account.action_tax_form"
+                            sequence="20"/>
+
+                <menuitem   id="menu_hkd_tax_groups"
+                            name="Nhóm ngành nghề thuế"
+                            parent="menu_taxes"
+                            action="hkd_tax_policy.action_hkd_tax_policy"
+                            sequence="30"/>
+                
+            <menuitem  id="menu_uoms"
+                        name="Đơn vị tính"
+                        parent="menu_configurations"
+                        sequence="30"/>
+
+                <menuitem   id="menu_uom"
+                            name="Danh mục đơn vị tính"
+                            parent="menu_uoms"
+                            action="action_uom_form"
+                            sequence="40"/>
+
+            <menuitem id="menu_product_pkg"
+                    name="Sản phẩm"
+                    parent="menu_configurations"
+                    sequence="40"/>
+
+                <menuitem id="menu_product_category"
+                        name="Danh mục Sản phẩm"
+                        parent="menu_product_pkg"
+                        action="product.product_category_action_form"
+                        sequence="10"/>
+
+                <menuitem id="menu_product_packaging"
+                        name="Bao bì sản phẩm"
+                        parent="menu_product_pkg"
+                        action="action_product_packaging"
+                        sequence="20"/>
+
+                <menuitem id="menu_product_pricelist"
+                        name="Bảng giá"
+                        parent="menu_product_pkg"
+                        action="action_product_pricelist"
+                        sequence="30"/>
+
+    </data>
+</odoo>

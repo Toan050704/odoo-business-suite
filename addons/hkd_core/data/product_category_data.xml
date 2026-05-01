@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- ══════════════════════════════════════════════════════════════
+             1. NGUYÊN PHỤ LIỆU  │ AVCO │ Thủ công (manual)
+             ══════════════════════════════════════════════════════════════ -->
+
+        <!-- Nhóm cha: Nguyên phụ liệu -->
+        <record id="categ_nguyen_phu_lieu" model="product.category">
+            <field name="name">Nguyên phụ liệu</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">average</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             2. THÀNH PHẨM  │ AVCO │ Thủ công (manual)
+             ══════════════════════════════════════════════════════════════ -->
+
+        <!-- Nhóm cha: Thành phẩm -->
+        <record id="categ_thanh_pham" model="product.category">
+            <field name="name">Thành phẩm</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">average</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             3. BÁN THÀNH PHẨM  │ AVCO │ Thủ công (manual)
+             ══════════════════════════════════════════════════════════════ -->
+
+        <record id="categ_ban_thanh_pham" model="product.category">
+            <field name="name">Bán thành phẩm</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">average</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             4. VẬT LIỆU ĐÓNG GÓI  │ AVCO │ Thủ công (manual)
+             ══════════════════════════════════════════════════════════════ -->
+
+        <record id="categ_vat_lieu_dong_goi" model="product.category">
+            <field name="name">Vật liệu đóng gói</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">average</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             5. CÔNG CỤ - DỤNG CỤ  │ Giá thực tế (FIFO) │ Thủ công
+             ══════════════════════════════════════════════════════════════ -->
+
+        <record id="categ_cong_cu_dung_cu" model="product.category">
+            <field name="name">Công cụ - Dụng cụ</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">fifo</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
+        <!-- ══════════════════════════════════════════════════════════════
+             6. HÀNG HÓA MUA VỀ ĐỂ BÁN  │ AVCO │ Thủ công
+             ══════════════════════════════════════════════════════════════ -->
+
+        <record id="categ_hang_hoa_ban" model="product.category">
+            <field name="name">Hàng hóa mua để bán</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">average</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
+    </data>
+</odoo>

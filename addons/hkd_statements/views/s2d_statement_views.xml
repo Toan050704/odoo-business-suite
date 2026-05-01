@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_s2d_tree" model="ir.ui.view">
+        <field name="name">s2d.statement.tree</field>
+        <field name="model">s2d.statement</field>
+        <field name="arch" type="xml">
+            <tree js_class="s2d_list" class="s2d_excel" create="false" delete="false" edit="false"
+                decoration-bf="dien_giai in ['Cộng phát sinh trong kỳ', 'Tồn cuối kỳ']">
+
+                <field name="currency_id" invisible="1"/>
+
+                <field name="so_hieu" string="Số hiệu"/>
+                <field name="date" string="Ngày tháng"/>
+                <field name="dien_giai" string="Diễn giải"/>
+                <field name="uom_id" string="Đơn vị tính"/>
+                <field name="don_gia" string="Đơn giá" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="qty_in" string="SL Nhập"/>
+                <field name="amount_in" string="Thành tiền Nhập" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="qty_out" string="SL Xuất"/>
+                <field name="amount_out" string="Thành tiền Xuất" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="qty_balance" string="SL Tồn"/>
+                <field name="amount_balance" string="Thành tiền Tồn" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_s2d_search" model="ir.ui.view">
+        <field name="name">s2d.statement.search</field>
+        <field name="model">s2d.statement</field>
+        <field name="arch" type="xml">
+            <search>
+                
+            </search>
+        </field>
+    </record>
+
+    <record id="action_s2d_statement" model="ir.actions.act_window">
+        <field name="name">S2d-HKD: Sổ chi tiết vật liệu, dụng cụ, sản phẩm, hàng hóa</field>
+        <field name="res_model">s2d.statement</field>
+        <field name="view_mode">tree</field>
+        <field name="search_view_id" ref="view_s2d_search"/>
+    </record>
+</odoo>

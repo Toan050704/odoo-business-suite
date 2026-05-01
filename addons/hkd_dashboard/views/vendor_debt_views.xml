@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_vendor_debt_dashboard_form" model="ir.ui.view">
+        <field name="name">vendor.debt.dashboard.form</field>
+        <field name="model">vendor.debt.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Công nợ" class="hkd_dashboard">
+                <sheet>
+                    <div class="hkd-hero-banner mb-3 debt-banner">
+                        <div>
+                            <h1>Công nợ Nhà cung cấp &amp; Tiểu thương</h1>
+                            <div class="hkd-hero-subtitle">Theo dõi khoản phải trả, hóa đơn quá hạn và PO chưa xử lý.</div>
+                        </div>
+                    </div>
+
+                    <field name="currency_id" invisible="1"/>
+                    <div class="hkd-filter-card mb-3">
+                        <div class="hkd-section-title"><i class="fa fa-calendar"/> Khoảng thời gian</div>
+                        <div class="hkd-filter-bar">
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                        </div>
+                    </div>
+                    <div style="display:none;">
+                        <field name="chart_debt_by_vendor"/>
+                        <field name="chart_overdue_vs_notdue"/>
+                    </div>
+
+                    <div class="hkd-kpi-row">
+                        <div class="hkd-kpi-card primary">
+                            <div class="hkd-kpi-icon bg-primary-soft"><i class="fa fa-files-o"/></div>
+                            <div class="kpi-title">Tổng công nợ</div>
+                            <div class="kpi-value">
+                                <field name="total_debt" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Tổng số dư còn phải trả</div>
+                        </div>
+
+                        <div class="hkd-kpi-card danger">
+                            <div class="hkd-kpi-icon bg-danger-soft"><i class="fa fa-exclamation-triangle"/></div>
+                            <div class="kpi-title">Quá hạn</div>
+                            <div class="kpi-value">
+                                <field name="overdue_debt" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Các hóa đơn đã đến hạn</div>
+                            <div class="hkd-action-link mt-2">
+                                <button name="action_open_overdue_invoices" type="object" class="btn btn-outline-danger btn-sm w-100">
+                                    Xem chi tiết
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="hkd-kpi-card success">
+                            <div class="hkd-kpi-icon bg-success-soft"><i class="fa fa-clock-o"/></div>
+                            <div class="kpi-title">Chưa đến hạn</div>
+                            <div class="kpi-value">
+                                <field name="not_due_debt" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Còn thời gian thanh toán</div>
+                        </div>
+
+                        <div class="hkd-kpi-card warning">
+                            <div class="hkd-kpi-icon bg-warning-soft"><i class="fa fa-truck"/></div>
+                            <div class="kpi-title">PO chưa xử lý</div>
+                            <div class="kpi-value">
+                                <field name="po_pending" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                            </div>
+                            <div class="hkd-kpi-subtext">Đơn mua chưa tạo hóa đơn</div>
+                            <div class="hkd-action-link mt-2">
+                                <button name="action_open_po_pending" type="object" class="btn btn-outline-warning btn-sm w-100">
+                                    Xem PO
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hkd-chart-row">
+                        <div class="hkd-chart-box">
+                            <h3>Công nợ nhà cung cấp</h3>
+                            <div class="hkd-canvas-wrap">
+                                <canvas id="hkd_vendor_bar_supplier"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="hkd-chart-box">
+                            <h3>Công nợ tiểu thương</h3>
+                            <div class="hkd-canvas-wrap">
+                                <canvas id="hkd_vendor_bar_trader"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hkd-chart-row">
+                        <div class="hkd-chart-box">
+                            <h3>Quá hạn vs Chưa đến hạn</h3>
+                            <div class="hkd-canvas-wrap">
+                                <canvas id="hkd_overdue_doughnut"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="hkd-chart-box">
+                            <h3>Phân bổ công nợ</h3>
+                            <div class="hkd-tax-grid">
+                                <div class="hkd-tax-metric">
+                                    <div class="hkd-kpi-label">Nhà cung cấp</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="supplier_debt" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+                                <div class="hkd-tax-metric">
+                                    <div class="hkd-kpi-label">Tiểu thương</div>
+                                    <div class="hkd-kpi-value">
+                                        <field name="trader_debt" widget="monetary" options="{'currency_field': 'currency_id'}" nolabel="1"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hkd-table-full">
+                        <h3>Chi tiết hóa đơn còn nợ</h3>
+                        <field name="vendor_line_ids" nolabel="1" readonly="1" class="w-100">
+                            <tree decoration-danger="is_overdue == True"
+                                  decoration-success="is_overdue == False">
+                                <field name="partner_type"/>
+                                <field name="vendor_name"/>
+                                <field name="invoice_ref"/>
+                                <field name="amount_total" widget="monetary"/>
+                                <field name="amount_residual" widget="monetary"/>
+                                <field name="invoice_date_due"/>
+                                <field name="is_overdue" widget="boolean"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_vendor_debt_dashboard" model="ir.actions.act_window">
+        <field name="name">Công nợ</field>
+        <field name="res_model">vendor.debt.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_vendor_debt_dashboard_form"/>
+        <field name="target">current</field>
+    </record>
+</odoo>

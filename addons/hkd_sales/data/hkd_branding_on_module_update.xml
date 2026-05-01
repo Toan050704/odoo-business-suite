@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Mỗi lần -u hkd_sales: thử nạp ảnh từ static/img (chỉ ghi ô đang trống). -->
+    <data>
+        <function model="res.company" name="hkd_load_branding_from_module_static"/>
+    </data>
+</odoo>

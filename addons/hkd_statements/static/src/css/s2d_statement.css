@@ -1,0 +1,31 @@
+
+.s2d_excel td[name="so_hieu"] {
+    color: #0471e6 !important;
+    font-weight: 600;
+}
+
+.s2d_excel td[name="date"],
+.s2d_excel td[name="dien_giai"] {
+    color: #444 !important;
+}
+
+.s2d_excel td[name="qty_in"],
+.s2d_excel td[name="amount_in"] {
+    color: #28a745 !important;
+    font-weight: 600;
+    background-color: #f8fff9;
+}
+
+.s2d_excel td[name="qty_out"],
+.s2d_excel td[name="amount_out"] {
+    color: #dc3545 !important;
+    font-weight: 600;
+    background-color: #fff9f9; 
+}
+
+.s2d_excel td[name="qty_balance"],
+.s2d_excel td[name="amount_balance"] {
+    color: #212529 !important;
+    font-weight: 600;
+    background-color: #fdfdfd;
+}

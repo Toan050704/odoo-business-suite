@@ -1,0 +1,76 @@
+<odoo>
+    <record id="view_statements_wizard_form" model="ir.ui.view">
+        <field name="name">statements.wizard.form</field>
+        <field name="model">statements.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Lọc sổ">
+                <group>
+                    <!-- Ẩn nhưng nhận context -->
+                    <field name="target_model" invisible="1"/>
+
+                    <!-- Chỉ hiện khi là s2d -->
+                    <field name="product_id"
+                           options="{'no_create': True}"
+                           attrs="{'invisible': [('target_model', '!=', 's2d.statement')],
+                                   'required': [('target_model', '=', 's2d.statement')]}"/>
+
+                    <field name="ky_bao_cao"/>
+                    <field name="nam"
+                           attrs="{'invisible': [('ky_bao_cao', '=', 'tuy_chon')]}"/>
+
+                    <field name="thang"
+                           attrs="{'invisible': [('ky_bao_cao', '!=', 'thang')]}"/>
+
+                    <field name="quy"
+                           attrs="{'invisible': [('ky_bao_cao', '!=', 'quy')]}"/>
+
+                    <field name="date_from"
+                           attrs="{'invisible': [('ky_bao_cao', '!=', 'tuy_chon')]}"/>
+                    <field name="date_to"
+                           attrs="{'invisible': [('ky_bao_cao', '!=', 'tuy_chon')]}"/>
+                </group>
+                <footer>
+                    <button name="action_load" string="Xem sổ" type="object" class="btn-primary"/>
+                    <button string="Huỷ" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action cho S2D -->
+    <record id="action_statements_wizard_s2d" model="ir.actions.act_window">
+        <field name="name">Lọc sổ S2D</field>
+        <field name="res_model">statements.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_target_model': 's2d.statement'}</field>
+    </record>
+
+    <!-- Action cho S2C -->
+    <record id="action_statements_wizard_s2c" model="ir.actions.act_window">
+        <field name="name">Lọc sổ S2C</field>
+        <field name="res_model">statements.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_target_model': 's2c.statement'}</field>
+    </record>
+
+    <!-- Action cho S2B -->
+    <record id="action_statements_wizard_s2b" model="ir.actions.act_window">
+        <field name="name">Lọc sổ S2B</field>
+        <field name="res_model">statements.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_target_model': 's2b.statement'}</field>
+    </record>
+
+    <!-- Action cho S2E -->
+    <record id="action_statements_wizard_s2e" model="ir.actions.act_window">
+        <field name="name">Lọc sổ S2E</field>
+        <field name="res_model">statements.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'default_target_model': 's2e.statement'}</field>
+    </record>
+
+</odoo>

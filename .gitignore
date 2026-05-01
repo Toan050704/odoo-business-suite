@@ -1,0 +1,33 @@
+# --- Python & Virtual Env ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+.venv/
+
+# --- Environment Variables ---
+.env
+.env.local
+
+# --- Odoo & Docker Logs ---
+*.log
+/etc/*.log
+
+# --- IDE & Editor Settings ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Docker Override ---
+docker-compose.override.yml
+
+# --- System Temporary Files ---
+Thumbs.db
+ehthumbs.db
+
+# --- Test Scripts ---
+run_all_tests.sh

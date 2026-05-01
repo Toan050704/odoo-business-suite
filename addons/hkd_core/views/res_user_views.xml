@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_users_hkd_form" model="ir.ui.view">
+        <field name="name">res.users.hkd.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='access_rights']//group[1]" position="after">
+                <group string="HKD">
+                    <field name="is_hkd_owner" string="Là chủ Hộ kinh doanh"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

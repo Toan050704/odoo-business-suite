@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dashboard_launcher_user,access_dashboard_launcher_user,model_dashboard_launcher,base.group_user,1,1,1,1
+access_vendor_debt_dashboard_user,access_vendor_debt_dashboard_user,model_vendor_debt_dashboard,base.group_user,1,1,1,1
+access_vendor_debt_line_user,access_vendor_debt_line_user,model_vendor_debt_line,base.group_user,1,1,1,1

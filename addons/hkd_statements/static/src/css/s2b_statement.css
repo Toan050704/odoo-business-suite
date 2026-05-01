@@ -1,0 +1,25 @@
+.s2b_excel td[name="so_hieu"] {
+    color: #0471e6 !important;
+    font-weight: 600;
+}
+
+.s2b_excel td[name="amount"] {
+    color: #28a745 !important;
+    font-weight: 600;
+    text-align: right !important;
+    background-color: #f8fff9;
+}
+
+.s2b_excel td[name="vat"] {
+    color: #fd7e14 !important;
+    font-weight: 600;
+    text-align: right !important;
+    background-color: #fff4e5;
+}
+
+.s2b_excel tfoot {
+    background: #f1f3f5 !important; 
+    font-weight: 700 !important;
+    color: #000 !important;
+    border-top: 2px solid #adb5bd !important;
+}

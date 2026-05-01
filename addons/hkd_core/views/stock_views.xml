@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <record id="action_stock_picking_in" model="ir.actions.act_window">
+            <field name="name">Phiếu nhập kho</field>
+            <field name="res_model">stock.picking</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('picking_type_code', '=', 'incoming')]</field>
+            <field name="context">{'default_picking_type_code': 'incoming'}</field>
+      </record>
+
+      <record id="action_stock_picking_out" model="ir.actions.act_window">
+            <field name="name">Phiếu xuất kho</field>
+            <field name="res_model">stock.picking</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('picking_type_code', '=', 'outgoing')]</field>
+            <field name="context">{'default_picking_type_code': 'outgoing'}</field>
+      </record>
+
+      <record id="action_stock_quant" model="ir.actions.act_window">
+            <field name="name">Tồn kho hiện tại</field>
+            <field name="res_model">stock.quant</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('location_id.usage', '=', 'internal')]</field>
+      </record>
+
+      <record id="action_stock_move_lines" model="ir.actions.act_window">
+            <field name="name">Lịch sử di chuyển</field>
+            <field name="res_model">stock.move.line</field>
+            <field name="view_mode">tree,form</field>
+      </record>
+
+      <record id="action_uom_form" model="ir.actions.act_window">
+            <field name="name">Danh mục đơn vị tính</field>
+            <field name="res_model">uom.uom</field>
+            <field name="view_mode">tree,form</field>
+      </record>
+</odoo>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_nhan_bo_dau_phong" model="product.template">
+            <field name="name">NHÂN BƠ ĐẬU PHỘNG</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_nhan_dua" model="product.template">
+            <field name="name">NHÂN DỪA</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_kem_phu_banh" model="product.template">
+            <field name="name">KEM PHỦ BÁNH</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_pate" model="product.template">
+            <field name="name">PATE</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_sauce_dau_trung" model="product.template">
+            <field name="name">SAUCE DẦU TRỨNG</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_xiu_mai" model="product.template">
+            <field name="name">XÍU MẠI</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_nhan_bo_cuoi" model="product.template">
+            <field name="name">NHÂN BÒ CƯỜI</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_cha_lua" model="product.template">
+            <field name="name">CHẢ LỤA</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_unit"/>
+            <field name="uom_po_id" ref="uom.product_uom_unit"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_nhan_dau_xanh" model="product.template">
+            <field name="name">NHÂN ĐẬU XANH</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_sauce_banh_mi_muoi_ot" model="product.template">
+            <field name="name">SOUCE BÁNH MÌ MUỐI ỚT</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+        <record id="product_sauce_banh_mi" model="product.template">
+            <field name="name">SOUCE BÁNH MÌ</field>
+            <field name="detailed_type">product</field>
+            <field name="uom_id" ref="uom.product_uom_gram"/>
+            <field name="uom_po_id" ref="uom.product_uom_gram"/>
+            <field name="list_price">0</field>
+            <field name="standard_price">0</field>
+            <field name="categ_id" ref="categ_ban_thanh_pham"/>
+        </record>
+
+    </data>
+</odoo>

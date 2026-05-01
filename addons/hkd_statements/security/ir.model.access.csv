@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_s2b_statement,access_s2b_statement,model_s2b_statement,,1,1,1,1
+access_s2c_statement,access_s2c_statement,model_s2c_statement,,1,1,1,1
+access_s2d_statement,access_s2d_statement,model_s2d_statement,,1,1,1,1
+access_s2e_statement,access_s2e_statement,model_s2e_statement,,1,1,1,1
+access_statements_wizard,access_statements_wizard,model_statements_wizard,,1,1,1,1

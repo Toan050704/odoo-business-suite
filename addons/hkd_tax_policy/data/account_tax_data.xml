@@ -1,0 +1,886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="tax_dist_vat1_pit0_5_00" model="account.tax">
+            <field name="name">Hoạt động bán buôn, bán lẻ các loại hàng hóa (trừ giá trị hàng hóa đại lý bán đúng giá hưởng hoa hồng)</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">1</field>
+            <field name="hkd_pit_rate">0.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_distribution_goods"/>
+            <field name="description">Thuế GTGT 1%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_dist_vat1_pit0_5_01" model="account.tax">
+            <field name="name">Khoản thưởng, hỗ trợ đạt doanh số, khuyến mại, chiết khấu thương mại, chiết khấu thanh toán, chi hỗ trợ bằng tiền hoặc không bằng tiền cho hộ khoán; (Mới bổ sung)</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">1</field>
+            <field name="hkd_pit_rate">0.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_distribution_goods"/>
+            <field name="description">Thuế GTGT 1%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_dist_vat0_pit0_5_02" model="account.tax">
+            <field name="name">Hoạt động phân phối, cung cấp hàng hóa không chịu thuế GTGT, không phải khai thuế GTGT, thuộc diện chịu thuế GTGT 0% theo pháp luật về thuế GTGT</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">0.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_distribution_goods"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_dist_vat0_pit0_5_03" model="account.tax">
+            <field name="name">Hoạt động hợp tác kinh doanh với tổ chức thuộc nhóm ngành nghề này mà tổ chức có trách nhiệm khai thuế GTGT đối với toàn bộ doanh thu của hoạt động hợp tác kinh doanh theo quy định</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">0.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_distribution_goods"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_dist_vat0_pit0_5_04" model="account.tax">
+            <field name="name">Khoản thưởng, hỗ trợ đạt doanh số, khuyến mại, chiết khấu thương mại, chiết khấu thanh toán, chi hỗ trợ bằng tiền hoặc không bằng tiền cho hộ khoán gắn với mua hàng hoá, dịch vụ thuộc đối tượng không chịu thuế GTGT, không phải khai thuế GTGT, thuộc diện chịu thuế GTGT 0% theo pháp luật về thuế GTGT</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">0.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_distribution_goods"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_dist_vat0_pit0_5_05" model="account.tax">
+            <field name="name">Khoản bồi thường vi phạm hợp đồng, bồi thường khác</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">0.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_distribution_goods"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_06" model="account.tax">
+            <field name="name">Dịch vụ lưu trú gồm: Hoạt động cung cấp cơ sở lưu trú ngắn hạn cho khách du lịch, khách vãng; hoạt động cung cấp cơ sở lưu trú dài hạn không phải là căn hộ cho sinh viên, công nhân và những đối tượng tương tự; hoạt động cung cấp cơ sở lưu trú cùng dịch vụ ăn uống hoặc các phương tiện giải trí</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_07" model="account.tax">
+            <field name="name">Dịch vụ bốc xếp hàng hóa và hoạt động dịch vụ hỗ trợ khác liên quan đến vận tải như kinh doanh bến bãi, bán vé, trông giữ phương tiện</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_08" model="account.tax">
+            <field name="name">Dịch vụ bưu chính, chuyển phát thư tín và bưu kiện</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_09" model="account.tax">
+            <field name="name">Dịch vụ môi giới, đấu giá và hoa hồng đại lý</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_10" model="account.tax">
+            <field name="name">Dịch vụ tư vấn pháp luật, tư vấn tài chính, kế toán, kiểm toán; dịch vụ làm thủ tục hành chính thuế, hải quan</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_11" model="account.tax">
+            <field name="name">Dịch vụ xử lý dữ liệu, cho thuê cổng thông tin, thiết bị công nghệ thông tin, viễn thông; quảng cáo trên sản phẩm, dịch vụ nội dung thông tin số</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_12" model="account.tax">
+            <field name="name">Dịch vụ hỗ trợ văn phòng và các dịch vụ hỗ trợ kinh doanh khác</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_13" model="account.tax">
+            <field name="name">Dịch vụ tắm hơi, massage, karaoke, vũ trường, bi-a, internet, game</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_14" model="account.tax">
+            <field name="name">Dịch vụ may đo, giặt là; cắt tóc, làm đầu, gội đầu</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_15" model="account.tax">
+            <field name="name">Dịch vụ sửa chữa khác bao gồm: sửa chữa máy vi tính và các đồ dùng gia đình</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_16" model="account.tax">
+            <field name="name">Dịch vụ tư vấn, thiết kế, giám sát thi công xây dựng cơ bản</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_17" model="account.tax">
+            <field name="name">Các dịch vụ khác thuộc đối tượng tính thuế GTGT theo phương pháp khấu trừ với mức thuế suất thuế GTGT 10%</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit2_18" model="account.tax">
+            <field name="name">Xây dựng, lắp đặt không bao thầu nguyên vật liệu (bao gồm cả lắp đặt máy móc, thiết bị công nghiệp)</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat0_pit2_19" model="account.tax">
+            <field name="name">Hoạt động cung cấp dịch vụ không chịu thuế GTGT, không phải khai thuế GTGT, thuộc diện chịu thuế GTGT 0% theo pháp luật về thuế GTGT</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat0_pit2_20" model="account.tax">
+            <field name="name">Hoạt động hợp tác kinh doanh với tổ chức thuộc nhóm ngành nghề này mà tổ chức có trách nhiệm khai thuế GTGT đối với toàn bộ doanh thu của hoạt động hợp tác kinh doanh theo quy định</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat0_pit2_21" model="account.tax">
+            <field name="name">Khoản bồi thường vi phạm hợp đồng, bồi thường khác</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">2</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit5_22" model="account.tax">
+            <field name="name">Cho thuê nhà, đất, cửa hàng, nhà xưởng, kho bãi trừ dịch vụ lưu trú</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit5_23" model="account.tax">
+            <field name="name">Cho thuê phương tiện vận tải, máy móc thiết bị không kèm theo người điều khiển</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat5_pit5_24" model="account.tax">
+            <field name="name">Cho thuê tài sản khác không kèm theo dịch vụ</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">5</field>
+            <field name="hkd_pit_rate">5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 5%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat0_pit5_25" model="account.tax">
+            <field name="name">Làm đại lý xổ số, đại lý bảo hiểm, bán hàng đa cấp</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_svc_vat0_pit5_26" model="account.tax">
+            <field name="name">Khoản bồi thường vi phạm hợp đồng, bồi thường khác.</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_service_construction_no_material"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_27" model="account.tax">
+            <field name="name">Sản xuất, gia công, chế biến sản phẩm hàng hóa</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_28" model="account.tax">
+            <field name="name">Khai thác, chế biến khoáng sản</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_29" model="account.tax">
+            <field name="name">Vận tải hàng hóa, vận tải hành khách</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_30" model="account.tax">
+            <field name="name">Dịch vụ kèm theo bán hàng hóa như dịch vụ đào tạo, bảo dưỡng, chuyển giao công nghệ kèm theo bán sản phẩm</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_31" model="account.tax">
+            <field name="name">Dịch vụ ăn uống</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_32" model="account.tax">
+            <field name="name">Dịch vụ sửa chữa và bảo dưỡng máy móc thiết bị, phương tiện vận tải, ô tô, mô tô, xe máy và xe có động cơ khác</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_33" model="account.tax">
+            <field name="name">Xây dựng, lắp đặt có bao thầu nguyên vật liệu (bao gồm cả lắp đặt máy móc, thiết bị công nghiệp)</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat3_pit1_5_34" model="account.tax">
+            <field name="name">Hoạt động khác thuộc đối tượng tính thuế GTGT theo phương pháp khấu trừ với mức thuế suất thuế GTGT 10%</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">3</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 3%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat0_pit1_5_35" model="account.tax">
+            <field name="name">Hoạt động không chịu thuế GTGT, không phải khai thuế GTGT, thuộc diện chịu thuế GTGT 0% theo pháp luật về thuế GTGT</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_mfg_vat0_pit1_5_36" model="account.tax">
+            <field name="name">Hoạt động hợp tác kinh doanh với tổ chức thuộc nhóm ngành nghề này mà tổ chức có trách nhiệm khai thuế GTGT đối với toàn bộ doanh thu của hoạt động hợp tác kinh doanh theo quy định.</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">0</field>
+            <field name="hkd_pit_rate">1.5</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_manufacturing_transport_with_goods"/>
+            <field name="description">Thuế GTGT 0%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_other_vat2_pit1_37" model="account.tax">
+            <field name="name">Hoạt động sản xuất các sản phẩm thuộc đối tượng tính thuế GTGT theo phương pháp khấu trừ với mức thuế suất thuế GTGT 5%</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">2</field>
+            <field name="hkd_pit_rate">1</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_other"/>
+            <field name="description">Thuế GTGT 2%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_other_vat2_pit1_38" model="account.tax">
+            <field name="name">Hoạt động cung cấp các dịch vụ thuộc đối tượng tính thuế GTGT theo phương pháp khấu trừ với mức thuế suất thuế GTGT 5%</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">2</field>
+            <field name="hkd_pit_rate">1</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_other"/>
+            <field name="description">Thuế GTGT 2%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+        <record id="tax_other_vat2_pit1_39" model="account.tax">
+            <field name="name">Hoạt động khác</field>
+            <field name="amount_type">percent</field>
+            <field name="active" eval="True"/>
+            <field name="type_tax_use">sale</field>
+            <field name="amount">2</field>
+            <field name="hkd_pit_rate">1</field>
+            <field name="hkd_tax_policy_id" ref="business_activity_other"/>
+            <field name="description">Thuế GTGT 2%</field>
+            <field name="tax_group_id" ref="account.tax_group_taxes"/>
+            <field name="country_id" ref="base.vn"/>
+            <field name="is_base_affected" eval="True"/>
+            <field name="invoice_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'base'}),
+                (0, 0, {'factor_percent': 100, 'repartition_type': 'tax', 'use_in_tax_closing': True}),
+            ]"/>
+        </record>
+
+    </data>
+</odoo>

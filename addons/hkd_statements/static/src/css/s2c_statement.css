@@ -1,0 +1,22 @@
+.s2c_excel td[name="so_hieu"] {
+    color: #0471e6 !important;
+    font-weight: 600;
+}
+
+.s2c_excel td[name="date"],
+.s2c_excel td[name="dien_giai"] {
+    color: #444 !important;
+}
+
+.s2c_excel td[name="amount"] {
+    color: #28a745 !important;
+    font-weight: 600;
+    background-color: #f8fff9;
+}
+
+.s2c_excel tfoot {
+    background: #f1f3f5 !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    border-top: 2px solid #dee2e6 !important;
+}

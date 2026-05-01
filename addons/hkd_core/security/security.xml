@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="module_category_hkd" model="ir.module.category">
+            <field name="name">Chức vụ</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="group_hkd_user" model="res.groups">
+            <field name="name">Nhân viên HKD</field>
+            <field name="category_id" ref="module_category_hkd"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_hkd_owner" model="res.groups">
+            <field name="name">Chủ HKD</field>
+            <field name="category_id" ref="module_category_hkd"/>
+            <field name="implied_ids" eval="[(4, ref('group_hkd_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+        </record>
+
+    </data>
+</odoo>
