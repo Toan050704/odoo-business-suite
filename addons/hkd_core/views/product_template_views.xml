@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product.product_template_action_all" model="ir.actions.act_window">
+        <field name="context">{'search_default_categ_id': 1, 'group_by': 'categ_id'}</field>
+    </record>
+
+</odoo>

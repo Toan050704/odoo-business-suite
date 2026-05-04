@@ -69,5 +69,16 @@
             <field name="property_valuation">manual_periodic</field>
         </record>
 
+        <!-- ══════════════════════════════════════════════════════════════
+            7. CHI PHÍ DỊCH VỤ │ Service │ Không tồn kho
+            ══════════════════════════════════════════════════════════════ -->
+
+        <record id="categ_chi_phi_dich_vu" model="product.category">
+            <field name="name">Chi phí dịch vụ</field>
+            <field name="parent_id" ref="product.product_category_all"/>
+            <field name="property_cost_method">standard</field>
+            <field name="property_valuation">manual_periodic</field>
+        </record>
+
     </data>
 </odoo>
