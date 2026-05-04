@@ -17,6 +17,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">150</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -27,6 +28,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -37,6 +39,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -47,6 +50,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -57,6 +61,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -67,6 +72,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -77,6 +83,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -97,6 +104,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="product_uom_ml"/>
         <field name="uom_po_id" ref="product_uom_ml"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -107,6 +115,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="product_uom_ml"/>
         <field name="uom_po_id" ref="product_uom_ml"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -117,6 +126,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -127,6 +137,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -137,6 +148,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -147,6 +159,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -157,6 +170,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -167,6 +181,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -177,6 +192,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -187,6 +203,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="product_uom_ml"/>
         <field name="uom_po_id" ref="product_uom_ml"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -197,6 +214,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -207,6 +225,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_kgm"/>
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -217,6 +236,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -227,6 +247,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -237,6 +258,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="product_uom_ml"/>
         <field name="uom_po_id" ref="product_uom_ml"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -247,6 +269,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -257,6 +280,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_kgm"/>
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -267,6 +291,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_kgm"/>
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -277,6 +302,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_kgm"/>
         <field name="uom_po_id" ref="uom.product_uom_kgm"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -287,6 +313,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -297,6 +324,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_unit"/>
         <field name="uom_po_id" ref="uom.product_uom_unit"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -307,6 +335,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="product_uom_ml"/>
         <field name="uom_po_id" ref="product_uom_ml"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -317,6 +346,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -327,6 +357,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -337,6 +368,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -347,6 +379,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -357,6 +390,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -367,6 +401,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
@@ -377,6 +412,7 @@
         <field name="detailed_type">product</field>
         <field name="uom_id" ref="uom.product_uom_gram"/>
         <field name="uom_po_id" ref="uom.product_uom_gram"/>
+        <field name="sale_ok">False</field>
         <field name="list_price">0</field>
         <field name="standard_price">0</field>
         <field name="categ_id" ref="categ_nguyen_phu_lieu"/>
