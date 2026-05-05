@@ -64,19 +64,46 @@ class VendorDebtDashboard(models.TransientModel):
         compute='_compute_chart_data',
     )
     chart_widget = fields.Char(string="Chart Widget")
+
     # TABLE
     vendor_line_ids = fields.One2many(
         'vendor.debt.line',
         'dashboard_id',
         string='Chi tiết công nợ',
+        compute='_compute_vendor_lines',
     )
 
     #  AUTO CREATE + LOAD DATA
     @api.model
     def create(self, vals):
-        rec = super().create(vals)
-        rec._load_vendor_lines()
-        return rec
+        return super().create(vals)
+
+    #  HELPER: trả về (supplier_invoices, trader_invoices)                #
+    def _fetch_invoices(self):
+        """
+        NCC  → in_invoice / in_refund  (HKD nợ nhà cung cấp)
+        Tiểu thương → out_invoice / out_refund (tiểu thương nợ HKD)
+        """
+        self.ensure_one()
+
+        base = [
+            ('state', '=', 'posted'),
+            ('payment_state', 'in', ['not_paid', 'partial']),
+            ('company_id', 'in', self.env.companies.ids),
+        ]
+        date_filter = []
+        if self.date_from:
+            date_filter.append(('invoice_date', '>=', self.date_from))
+        if self.date_to:
+            date_filter.append(('invoice_date', '<=', self.date_to))
+
+        supplier_invoices = self.env['account.move'].search(
+            [('move_type', 'in', ['in_invoice', 'in_refund'])] + base + date_filter
+        )
+        trader_invoices = self.env['account.move'].search(
+            [('move_type', 'in', ['out_invoice', 'out_refund'])] + base + date_filter
+        )
+        return supplier_invoices, trader_invoices
 
     # KPI
     @api.depends('date_from', 'date_to')
@@ -86,28 +113,15 @@ class VendorDebtDashboard(models.TransientModel):
         for rec in self:
             rec.currency_id = rec.env.company.currency_id
 
-            invoices_domain = [
-                ('move_type', 'in', ['in_invoice', 'in_refund']),
-                ('state', '=', 'posted'),
-                ('payment_state', 'in', ['not_paid', 'partial']),
-                ('company_id', 'in', rec.env.companies.ids),
-            ]
-            if rec.date_from:
-                invoices_domain.append(('invoice_date', '>=', rec.date_from))
-            if rec.date_to:
-                invoices_domain.append(('invoice_date', '<=', rec.date_to))
+            supplier_invoices, trader_invoices = rec._fetch_invoices()
 
-            invoices = rec.env['account.move'].search(invoices_domain)
-
-            supplier_invoices = invoices.filtered(lambda m: m.partner_id.supplier_rank > 0)
-            trader_invoices = invoices.filtered(lambda m: m.partner_id.supplier_rank <= 0)
-
-            total = sum(invoices.mapped('amount_residual'))
             supplier_total = sum(supplier_invoices.mapped('amount_residual'))
-            trader_total = sum(trader_invoices.mapped('amount_residual'))
+            trader_total   = sum(trader_invoices.mapped('amount_residual'))
+            total          = supplier_total + trader_total
 
+            all_invoices = supplier_invoices + trader_invoices
             overdue = sum(
-                m.amount_residual for m in invoices
+                m.amount_residual for m in all_invoices
                 if m.invoice_date_due and m.invoice_date_due < today
             )
 
@@ -117,12 +131,12 @@ class VendorDebtDashboard(models.TransientModel):
                 ('company_id', 'in', rec.env.companies.ids),
             ])
 
-            rec.total_debt = total
+            rec.total_debt    = total
             rec.supplier_debt = supplier_total
-            rec.trader_debt = trader_total
-            rec.overdue_debt = overdue
-            rec.not_due_debt = total - overdue
-            rec.po_pending = sum(pos.mapped('amount_total'))
+            rec.trader_debt   = trader_total
+            rec.overdue_debt  = overdue
+            rec.not_due_debt  = total - overdue
+            rec.po_pending    = sum(pos.mapped('amount_total'))
 
     # CHART
     @api.depends('date_from', 'date_to')
@@ -130,31 +144,23 @@ class VendorDebtDashboard(models.TransientModel):
         today = fields.Date.today()
 
         for rec in self:
-            invoices_domain = [
-                ('move_type', 'in', ['in_invoice', 'in_refund']),
-                ('state', '=', 'posted'),
-                ('payment_state', 'in', ['not_paid', 'partial']),
-                ('company_id', 'in', rec.env.companies.ids),
-            ]
-            if rec.date_from:
-                invoices_domain.append(('invoice_date', '>=', rec.date_from))
-            if rec.date_to:
-                invoices_domain.append(('invoice_date', '<=', rec.date_to))
-
-            invoices = rec.env['account.move'].search(invoices_domain)
+            supplier_invoices, trader_invoices = rec._fetch_invoices()
 
             supplier_map = {}
-            trader_map = {}
-            for inv in invoices:
+            for inv in supplier_invoices:
                 name = inv.partner_id.name or 'Không tên'
-                target = supplier_map if inv.partner_id.supplier_rank > 0 else trader_map
-                target[name] = target.get(name, 0) + inv.amount_residual
+                supplier_map[name] = supplier_map.get(name, 0) + inv.amount_residual
+
+            trader_map = {}
+            for inv in trader_invoices:
+                name = inv.partner_id.name or 'Không tên'
+                trader_map[name] = trader_map.get(name, 0) + inv.amount_residual
 
             def _top10(data):
                 return sorted(data.items(), key=lambda x: x[1], reverse=True)[:10]
 
             top_suppliers = _top10(supplier_map)
-            top_traders = _top10(trader_map)
+            top_traders   = _top10(trader_map)
 
             rec.chart_debt_by_vendor = json.dumps({
                 'supplier': {
@@ -167,59 +173,44 @@ class VendorDebtDashboard(models.TransientModel):
                 },
             })
 
+            all_invoices = supplier_invoices + trader_invoices
             overdue = sum(
-                m.amount_residual for m in invoices
+                m.amount_residual for m in all_invoices
                 if m.invoice_date_due and m.invoice_date_due < today
             )
-
-            not_due = sum(invoices.mapped('amount_residual')) - overdue
+            not_due = sum(all_invoices.mapped('amount_residual')) - overdue
 
             rec.chart_overdue_vs_notdue = json.dumps({
-                'overdue': round(overdue, 0),
-                'not_due': round(not_due, 0),
+                'overdue':  round(overdue, 0),
+                'not_due':  round(not_due, 0),
             })
 
     # LOAD TABLE DATA
-    def _load_vendor_lines(self):
+    @api.depends('date_from', 'date_to')
+    def _compute_vendor_lines(self):
         today = fields.Date.today()
 
-        # Xóa dữ liệu cũ
-        self.vendor_line_ids.unlink()
+        for rec in self:
+            supplier_invoices, trader_invoices = rec._fetch_invoices()
 
-        domain = [
-            ('move_type', 'in', ['in_invoice', 'in_refund']),
-            ('state', '=', 'posted'),
-            ('payment_state', 'in', ['not_paid', 'partial']),
-            ('company_id', 'in', self.env.companies.ids),
-        ]
-        if self.date_from:
-            domain.append(('invoice_date', '>=', self.date_from))
-        if self.date_to:
-            domain.append(('invoice_date', '<=', self.date_to))
+            lines = []
+            for inv in (supplier_invoices + trader_invoices).sorted('invoice_date_due'):
+                partner_type = 'Nhà cung cấp' if inv.move_type in ('in_invoice', 'in_refund') else 'Tiểu thương'
+                lines.append((0, 0, {
+                    'vendor_name':      inv.partner_id.name or '',
+                    'partner_type':     partner_type,
+                    'invoice_ref':      inv.name or '',
+                    'amount_total':     inv.amount_total,
+                    'amount_residual':  inv.amount_residual,
+                    'invoice_date_due': inv.invoice_date_due,
+                    'is_overdue':       bool(inv.invoice_date_due and inv.invoice_date_due < today),
+                    'move_id':          inv.id,
+                }))
 
-        invoices = self.env['account.move'].search(domain, order='invoice_date_due asc')
-
-        lines = []
-        for inv in invoices:
-            partner_type = 'Nhà cung cấp' if inv.partner_id.supplier_rank > 0 else 'Tiểu thương'
-            lines.append({
-                'dashboard_id': self.id,
-                'vendor_name': inv.partner_id.name or '',
-                'partner_type': partner_type,
-                'invoice_ref': inv.name or '',
-                'amount_total': inv.amount_total,
-                'amount_residual': inv.amount_residual,
-                'invoice_date_due': inv.invoice_date_due,
-                'is_overdue': bool(inv.invoice_date_due and inv.invoice_date_due < today),
-                'move_id': inv.id,
-            })
-
-        self.env['vendor.debt.line'].create(lines)
+            rec.vendor_line_ids = lines
 
     # ACTIONS
     def action_refresh(self):
-        self._load_vendor_lines()
-
         return {
             'type': 'ir.actions.act_window',
             'res_model': 'vendor.debt.dashboard',
@@ -235,7 +226,7 @@ class VendorDebtDashboard(models.TransientModel):
             'res_model': 'account.move',
             'view_mode': 'tree,form',
             'domain': [
-                ('move_type', 'in', ['in_invoice', 'in_refund']),
+                ('move_type', 'in', ['in_invoice', 'in_refund', 'out_invoice', 'out_refund']),
                 ('state', '=', 'posted'),
                 ('payment_state', 'in', ['not_paid', 'partial']),
                 ('invoice_date_due', '<', fields.Date.today()),
