@@ -10,8 +10,8 @@ services:
             - odoo-web-data:/var/lib/odoo
             - ./etc:/etc/odoo
             - ./addons:/mnt/extra-addons
-        env_file:
-            - .env
+        # env_file:
+        #     - .env
         environment:
             - HOST=db
             - USER=odoo
