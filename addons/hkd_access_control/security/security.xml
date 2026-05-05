@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="module_category_hkd_access" model="ir.module.category">
+            <field name="name">HKD Access</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <record id="group_hkd_employee" model="res.groups">
+            <field name="name">Nhân viên HKD</field>
+            <field name="category_id" ref="module_category_hkd_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_hkd_manager" model="res.groups">
+            <field name="name">Chủ / Quản lý HKD</field>
+            <field name="category_id" ref="module_category_hkd_access"/>
+            <field name="implied_ids" eval="[(4, ref('group_hkd_employee'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <!-- admin all -->
+        <record id="group_hkd_admin" model="res.groups">
+            <field name="name">Admin HKD</field>
+            <field name="category_id" ref="module_category_hkd_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <record id="group_hkd_hidden" model="res.groups">
+            <field name="name">HKD Hidden UI</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</odoo>

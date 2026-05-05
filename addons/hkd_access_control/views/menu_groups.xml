@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- HKD ROOT — manager + employee + admin đều thấy -->
+        <record id="hkd_core.menu_hkd_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_employee'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+
+        <!-- TRONG HKD — manager + employee + admin thấy -->
+        <record id="hkd_core.menu_sales" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_employee'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_so" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_employee'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_pos" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_employee'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_purchases" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_employee'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_warehouse" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_employee'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+
+        <!-- TRONG HKD — chỉ manager + admin thấy -->
+        <record id="hkd_core.menu_reports" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_debt_statements" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_hkd_dashboard_hub" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_hkd_vendor_debt" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_partners" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_products" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_configurations" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_core.menu_hkd_tax_groups" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+        <record id="hkd_tax_policy.menu_hkd_tax_policy" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [
+                ref('hkd_access_control.group_hkd_manager'),
+                ref('hkd_access_control.group_hkd_admin'),
+            ])]"/>
+        </record>
+
+        <record id="base.menu_management" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')]), (3, ref('hkd_access_control.group_hkd_hidden'))]"/>
+        </record>
+        <record id="base.menu_administration" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+        <record id="account.menu_account_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+        <record id="mrp.menu_mrp_config" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+        <record id="point_of_sale.menu_pos_global_settings" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+        <record id="purchase.menu_purchase_general_settings" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+        <record id="sale.menu_sale_general_settings" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+        <record id="stock.menu_stock_general_settings" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+        </record>
+
+        <!-- ẨN MENU ODOO GỐC — admin thấy, chủ và nhân viên không thấy -->
+        <record id="base.menu_board_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="base.menu_reporting_dashboard" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="account.menu_board_journal_1" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="point_of_sale.menu_pos_dashboard" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="sale.sale_menu_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="purchase.menu_purchase_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="stock.menu_stock_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="mrp.menu_mrp_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="account.menu_finance" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="mail.menu_root_discuss" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="point_of_sale.menu_point_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
+        </record>
+        <record id="contacts.menu_contacts" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_hidden')])]"/>
+        </record>
+
+    </data>
+</odoo>
