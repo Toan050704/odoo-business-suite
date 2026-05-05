@@ -169,6 +169,9 @@
         <record id="utm.menu_link_tracker_root" model="ir.ui.menu">
             <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_admin')])]"/>
         </record>
+        <record id="contacts.menu_contacts" model="ir.ui.menu">
+            <field name="groups_id" eval="[(6, 0, [ref('hkd_access_control.group_hkd_hidden')])]"/>
+        </record>
 
     </data>
 </odoo>

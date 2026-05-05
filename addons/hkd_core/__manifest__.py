@@ -10,6 +10,7 @@
         'base_setup',
         'account',
         'sale_management',
+        'sale',
         'point_of_sale',
         'product',
         'mrp',
