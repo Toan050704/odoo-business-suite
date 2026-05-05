@@ -225,8 +225,8 @@ class DashboardLauncher(models.TransientModel):
                 rec.tax_compare_note = _(
                     '<p><strong>Khuyến nghị: tính thuế theo doanh thu.</strong></p>'
                     '<p>Tổng thuế ước tính theo phương án này thấp hơn: %(revenue)s so với %(profit)s.</p>'
-                    '<p><em>Phương pháp doanh thu = Doanh thu × TNCN + Doanh thu × GTGT.</em></p>'
-                    '<p><em>Phương pháp lợi nhuận = (Doanh thu - Chi phí) × 15%% + Doanh thu × GTGT.</em></p>'
+                    '<p><em>Phương pháp doanh thu = Doanh thu × %%TNCN + Doanh thu × %%GTGT.</em></p>'
+                    '<p><em>Phương pháp lợi nhuận = (Doanh thu - Chi phí) × 15%% + Doanh thu × %%GTGT.</em></p>'
                 ) % {
                     'revenue': format(rec.tax_revenue_total, ',.0f'),
                     'profit': format(rec.tax_profit_total, ',.0f'),
