@@ -104,11 +104,22 @@ class S2CStatement(models.Model):
         seq += 1
 
         # ─── 4. Thuế TNCN ─────────────────────────────────────
-        tax = profit * 0.15 if profit > 0 else 0
+        # Cách 1: Tính theo lợi nhuận (cố định 15%)
+        tax_by_profit = profit * 0.15 if profit > 0 else 0
+        vals.append({                                        # ← bỏ seq += 1 ở đây
+            'sequence': seq,
+            'dien_giai': 'Thuế TNCN theo lợi nhuận (15%)',
+            'amount': tax_by_profit,
+        })
+        seq += 1
+
+        # Cách 2: Tính theo doanh thu × hkd_pit_rate
+        tax_by_revenue = sum(invoices.mapped('invoice_line_ids.hkd_tncn_amount'))
         vals.append({
             'sequence': seq,
-            'dien_giai': 'Tổng số thuế TNCN phải nộp',
-            'amount': tax,
+            'dien_giai': 'Thuế TNCN theo doanh thu',
+            'amount': tax_by_revenue,
         })
+        seq += 1
 
         self.create(vals)

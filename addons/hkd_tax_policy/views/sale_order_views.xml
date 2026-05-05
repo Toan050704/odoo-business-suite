@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
 
                 <xpath expr="//field[@name='partner_id']" position="attributes">
-                    <attribute name="domain">[('customer_rank', '&gt;', 0)]</attribute>
+                    <attribute name="domain">[('customer_rank', '&gt;', 0), ('phone', '!=', False)]</attribute>
                 </xpath>
 
             </field>
