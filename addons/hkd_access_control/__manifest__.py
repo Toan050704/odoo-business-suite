@@ -7,6 +7,7 @@
     'category': 'Hidden',
     'depends': [
         'hkd_core',
+        'contacts',
     ],
     'data': [
         'security/security.xml',
