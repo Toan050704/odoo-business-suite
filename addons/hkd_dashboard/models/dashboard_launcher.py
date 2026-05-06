@@ -134,7 +134,7 @@ class DashboardLauncher(models.TransientModel):
 
             rec.expense_total, rec.expense_invalid_total = rec._compute_cost_of_goods_sold()
             rec.net_result = rec.revenue_total - rec.expense_total
-    
+
     def _get_cash_payment_amount(self, move):
         """Tổng tiền đã thanh toán bằng tiền mặt cho hóa đơn này."""
         payment_lines = move.line_ids.filtered(
@@ -175,21 +175,14 @@ class DashboardLauncher(models.TransientModel):
             bank_amount = max(paid_amount - cash_amount, 0.0)
 
             if not has_ref:
-                # Không có ref → toàn bộ không hợp lệ
                 invalid_total += paid_amount
             elif cash_amount >= 5_000_000:
-                # Cash >= 5tr → tách: bank vào hợp lệ, cash vào không hợp lệ
                 valid_total += bank_amount
                 invalid_total += cash_amount
             else:
-                # Cash < 5tr → toàn bộ hợp lệ
                 valid_total += paid_amount
 
         return valid_total, invalid_total
-
-    # def _is_cash_purchase_bill(self, move):
-    #     threshold = 5_000_000
-    #     return float(move.amount_total or 0.0) >= threshold and move.journal_id.type == 'cash'
 
     @api.depends('date_from', 'date_to', 'revenue_total', 'expense_total')
     def _compute_tax_comparison(self):
@@ -202,21 +195,21 @@ class DashboardLauncher(models.TransientModel):
             tncn_total = sum(line.hkd_tncn_amount for line in lines)
             vat_total = sum(line.hkd_vat_amount for line in lines)
 
-            # Thuế theo doanh thu — đọc từ DB (hkd_tncn_amount, hkd_vat_amount)
             rec.tax_revenue_tncn = tncn_total
             rec.tax_revenue_vat = vat_total
             rec.tax_revenue_total = tncn_total + vat_total
 
-            # Thuế theo lợi nhuận — TNCN hardcode 15%, GTGT vẫn lấy từ DB
             rec.tax_profit_tncn = profit_base * profit_rate / 100.0
             rec.tax_profit_vat = vat_total
             rec.tax_profit_total = rec.tax_profit_tncn + rec.tax_profit_vat
 
+            # FIX: cả 2 nhánh đều có đủ 2 dòng công thức
             if rec.tax_profit_total < rec.tax_revenue_total:
                 rec.tax_compare_note = _(
                     '<p><strong>Khuyến nghị: tính thuế theo lợi nhuận.</strong></p>'
                     '<p>Tổng thuế ước tính theo phương án này thấp hơn: %(profit)s so với %(revenue)s.</p>'
-                    '<p><em>Phương pháp lợi nhuận = (Doanh thu - Chi phí) × 15%% + Doanh thu × GTGT.</em></p>'
+                    '<p><em>Phương pháp doanh thu = Doanh thu × %%TNCN + Doanh thu × %%GTGT.</em></p>'
+                    '<p><em>Phương pháp lợi nhuận = (Doanh thu - Chi phí) × 15%% + Doanh thu × %%GTGT.</em></p>'
                 ) % {
                     'profit': format(rec.tax_profit_total, ',.0f'),
                     'revenue': format(rec.tax_revenue_total, ',.0f'),
@@ -286,3 +279,28 @@ class DashboardLauncher(models.TransientModel):
                 ('ref', '!=', False),
             ],
         )
+
+    # chi phí không hợp lệ
+    def action_open_expense_invalid(self):
+        self.ensure_one()
+        bills = self.env['account.move'].search([
+            ('state', '=', 'posted'),
+            ('move_type', '=', 'in_invoice'),
+            ('invoice_date', '>=', self.date_from),
+            ('invoice_date', '<=', self.date_to),
+        ])
+
+        invalid_ids = []
+        for bill in bills:
+            has_ref = bill.ref and bill.ref.strip()
+            cash_amount = self._get_cash_payment_amount(bill)
+            if not has_ref or cash_amount >= 5_000_000:
+                invalid_ids.append(bill.id)
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Chi phí không hợp lệ'),
+            'res_model': 'account.move',
+            'view_mode': 'tree,form,pivot,graph',
+            'domain': [('id', 'in', invalid_ids)],
+        }

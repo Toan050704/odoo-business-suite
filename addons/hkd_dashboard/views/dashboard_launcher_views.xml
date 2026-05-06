@@ -67,7 +67,7 @@
                             </div>
                             <div class="hkd-kpi-subtext">Tổng chi phí không hợp lệ theo kỳ lọc</div>
                             <div class="hkd-action-link mt-2">
-                                <button name="action_open_expense" type="object"
+                                <button name="action_open_expense_invalid" type="object"
                                         class="btn btn-outline-warning btn-sm w-100">
                                     Xem chi tiết
                                 </button>
