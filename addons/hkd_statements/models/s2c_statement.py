@@ -40,17 +40,14 @@ class S2CStatement(models.Model):
             if not (bill.ref and bill.ref.strip()):
                 continue
 
+            # Bỏ qua toàn bộ HĐ nếu có thanh toán tiền mặt > 5tr
             cash_amount = self._get_cash_payment_amount(bill)
+            if cash_amount > 5_000_000:
+                continue
+
             paid_amount = bill.amount_total - bill.amount_residual
-
-            if cash_amount >= 5_000_000:
-                # Chỉ ghi phần đã trả không phải cash
-                record_amount = paid_amount - cash_amount
-            else:
-                record_amount = paid_amount
-
-            if record_amount > 0:
-                valid.append((bill, record_amount))
+            if paid_amount > 0:
+                valid.append((bill, paid_amount))
 
         return valid
 

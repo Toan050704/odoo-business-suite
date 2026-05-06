@@ -138,11 +138,11 @@
                             action="point_of_sale.action_pos_session"
                             sequence="30"/>
                 
-                <menuitem   id="menu_pos_invoice"
+                <!-- <menuitem   id="menu_pos_invoice"
                             name="Hóa đơn bán hàng (POS)"
                             parent="menu_pos"
                             action="action_pos_invoice"
-                            sequence="40"/>
+                            sequence="40"/> -->
 
         <!-- Purchase -->
         <menuitem   id="menu_purchases"
