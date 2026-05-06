@@ -172,13 +172,11 @@ class DashboardLauncher(models.TransientModel):
             has_ref = bill.ref and bill.ref.strip()
             cash_amount = self._get_cash_payment_amount(bill)
             paid_amount = bill.amount_total - bill.amount_residual
-            bank_amount = max(paid_amount - cash_amount, 0.0)
 
             if not has_ref:
                 invalid_total += paid_amount
             elif cash_amount >= 5_000_000:
-                valid_total += bank_amount
-                invalid_total += cash_amount
+                invalid_total += paid_amount
             else:
                 valid_total += paid_amount
 
@@ -272,23 +270,26 @@ class DashboardLauncher(models.TransientModel):
 
     def action_open_expense(self):
         self.ensure_one()
-        return self._open_account_move_list(
-            _('Chi phí hợp lệ'),
-            [
-                ('move_type', '=', 'in_invoice'),
-                ('ref', '!=', False),
-            ],
-        )
+        bills = self._get_period_vendor_bills()
+        valid_ids = []
+        for bill in bills:
+            has_ref = bill.ref and bill.ref.strip()
+            cash_amount = self._get_cash_payment_amount(bill)
+            if has_ref and cash_amount < 5_000_000:
+                valid_ids.append(bill.id)
+
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Chi phí hợp lệ'),
+            'res_model': 'account.move',
+            'view_mode': 'tree,form,pivot,graph',
+            'domain': [('id', 'in', valid_ids)],
+        }
 
     # chi phí không hợp lệ
     def action_open_expense_invalid(self):
         self.ensure_one()
-        bills = self.env['account.move'].search([
-            ('state', '=', 'posted'),
-            ('move_type', '=', 'in_invoice'),
-            ('invoice_date', '>=', self.date_from),
-            ('invoice_date', '<=', self.date_to),
-        ])
+        bills = self._get_period_vendor_bills()
 
         invalid_ids = []
         for bill in bills:
@@ -304,3 +305,15 @@ class DashboardLauncher(models.TransientModel):
             'view_mode': 'tree,form,pivot,graph',
             'domain': [('id', 'in', invalid_ids)],
         }
+
+    def _get_period_vendor_bills(self):
+        self.ensure_one()
+        domain = [
+            ('state', '=', 'posted'),
+            ('move_type', '=', 'in_invoice'),
+        ]
+        if self.date_from:
+            domain.append(('invoice_date', '>=', self.date_from))
+        if self.date_to:
+            domain.append(('invoice_date', '<=', self.date_to))
+        return self.env['account.move'].search(domain)
