@@ -123,7 +123,11 @@ class DashboardLauncher(models.TransientModel):
         for rec in self:
             rec.currency_id = rec.env.company.currency_id
 
-            domain_invoice = [('state', '=', 'posted'), ('move_type', '=', 'out_invoice')]
+            domain_invoice = [
+                ('state', '=', 'posted'),
+                ('move_type', '=', 'out_invoice'),
+                ('payment_state', 'in', ('paid', 'in_payment')),  
+            ]
             if rec.date_from:
                 domain_invoice.append(('invoice_date', '>=', rec.date_from))
             if rec.date_to:
@@ -265,7 +269,10 @@ class DashboardLauncher(models.TransientModel):
         self.ensure_one()
         return self._open_account_move_list(
             _('Doanh thu'),
-            [('move_type', '=', 'out_invoice')],
+            [
+                ('move_type', '=', 'out_invoice'),
+                ('payment_state', 'in', ('paid', 'in_payment')),
+            ],
         )
 
     def action_open_expense(self):

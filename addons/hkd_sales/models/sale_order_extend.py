@@ -102,6 +102,38 @@ class SaleOrder(models.Model):
         for picking in pickings.sudo():
             self._hkd_try_validate_picking(picking, invoice)
 
+    # def _hkd_try_validate_picking(self, picking, invoice):
+    #     self.ensure_one()
+    #     try:
+    #         if picking.state == 'draft':
+    #             picking.action_confirm()
+    #         if picking.state in ('waiting', 'confirmed'):
+    #             picking.action_assign()
+    #         if picking.state == 'assigned':
+    #             for sm in picking.move_ids.filtered(
+    #                 lambda m: m.state not in ('done', 'cancel')
+    #             ):
+    #                 sm.quantity_done = sm.product_uom_qty
+    #             res = picking.button_validate()
+    #             if isinstance(res, dict):
+    #                 self.message_post(
+    #                     body=_(
+    #                         'Hóa đơn %(inv)s: phiếu %(pick)s cần xác nhận thủ công trên kho (wizard).'
+    #                     )
+    #                     % {'inv': invoice.name, 'pick': picking.name}
+    #                 )
+    #     except UserError as err:
+    #         _logger.warning(
+    #             'HKD auto delivery: SO %s picking %s — %s',
+    #             self.name,
+    #             picking.name,
+    #             err,
+    #         )
+    #         self.message_post(
+    #             body=_('Hóa đơn %s — không tự hoàn tất giao hàng: %s')
+    #             % (invoice.name, str(err))
+    #         )
+
     def _hkd_try_validate_picking(self, picking, invoice):
         self.ensure_one()
         try:
@@ -114,14 +146,7 @@ class SaleOrder(models.Model):
                     lambda m: m.state not in ('done', 'cancel')
                 ):
                     sm.quantity_done = sm.product_uom_qty
-                res = picking.button_validate()
-                if isinstance(res, dict):
-                    self.message_post(
-                        body=_(
-                            'Hóa đơn %(inv)s: phiếu %(pick)s cần xác nhận thủ công trên kho (wizard).'
-                        )
-                        % {'inv': invoice.name, 'pick': picking.name}
-                    )
+                picking.with_context(skip_backorder=True)._action_done()
         except UserError as err:
             _logger.warning(
                 'HKD auto delivery: SO %s picking %s — %s',
@@ -133,7 +158,6 @@ class SaleOrder(models.Model):
                 body=_('Hóa đơn %s — không tự hoàn tất giao hàng: %s')
                 % (invoice.name, str(err))
             )
-
 
 class SaleOrderLine(models.Model):
     _inherit = 'sale.order.line'
