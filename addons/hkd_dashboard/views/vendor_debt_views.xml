@@ -14,11 +14,19 @@
                     </div>
 
                     <field name="currency_id" invisible="1"/>
-                    <div class="hkd-filter-card mb-3">
-                        <div class="hkd-section-title"><i class="fa fa-calendar"/> Khoảng thời gian</div>
-                        <div class="hkd-filter-bar">
-                            <field name="date_from"/>
-                            <field name="date_to"/>
+                    <div class="hkd-filter-card hkd-refresh-card mb-3">
+                        <div>
+                            <div class="hkd-section-title"><i class="fa fa-refresh"/> Dữ liệu công nợ hiện tại</div>
+                            <div class="hkd-refresh-subtitle">Tổng hợp theo hóa đơn còn nợ và PO chưa xử lý</div>
+                        </div>
+                        <div class="hkd-refresh-action">
+                            <button name="action_refresh"
+                                    type="object"
+                                    class="btn btn-primary hkd-icon-button"
+                                    title="Làm mới"
+                                    aria-label="Làm mới">
+                                <i class="fa fa-refresh"/>
+                            </button>
                         </div>
                     </div>
                     <div style="display:none;">

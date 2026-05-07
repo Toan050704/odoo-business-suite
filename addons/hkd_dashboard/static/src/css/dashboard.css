@@ -107,6 +107,45 @@
     padding: 16px;
 }
 
+.hkd_dashboard .hkd-refresh-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+}
+
+.hkd_dashboard .hkd-refresh-card .hkd-section-title {
+    margin-bottom: 4px;
+}
+
+.hkd_dashboard .hkd-refresh-subtitle {
+    color: #6b7280;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.hkd_dashboard .hkd-refresh-action {
+    display: flex;
+    align-items: center;
+}
+
+.hkd_dashboard .hkd-icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 16px;
+}
+
+.hkd_dashboard .hkd-icon-button:hover i {
+    transform: rotate(90deg);
+    transition: transform .2s ease;
+}
+
 .hkd_dashboard .hkd-kpi-row {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -383,6 +422,10 @@
     .hkd_dashboard .hkd-tax-grid,
     .hkd_dashboard .hkd-hero-stats {
         grid-template-columns: 1fr;
+    }
+
+    .hkd_dashboard .hkd-refresh-card {
+        align-items: flex-start;
     }
 
     .hkd_dashboard .hkd-filter-bar {

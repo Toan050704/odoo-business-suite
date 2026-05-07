@@ -9,17 +9,6 @@ class VendorDebtDashboard(models.TransientModel):
     _rec_name = 'name'
 
     name = fields.Char(default='Công nợ Nhà cung cấp')
-    date_from = fields.Date(
-        string='Từ ngày',
-        required=True,
-        default=lambda self: fields.Date.today().replace(day=1),
-    )
-    date_to = fields.Date(
-        string='Đến ngày',
-        required=True,
-        default=fields.Date.today,
-    )
-
     # KPI
     total_debt = fields.Monetary(
         string='Tổng công nợ',
@@ -70,13 +59,14 @@ class VendorDebtDashboard(models.TransientModel):
         'vendor.debt.line',
         'dashboard_id',
         string='Chi tiết công nợ',
-        compute='_compute_vendor_lines',
     )
 
     #  AUTO CREATE + LOAD DATA
     @api.model
     def create(self, vals):
-        return super().create(vals)
+        rec = super().create(vals)
+        rec._refresh_vendor_lines()
+        return rec
 
     #  HELPER: trả về (supplier_invoices, trader_invoices)                #
     def _fetch_invoices(self):
@@ -91,22 +81,16 @@ class VendorDebtDashboard(models.TransientModel):
             ('payment_state', 'in', ['not_paid', 'partial']),
             ('company_id', 'in', self.env.companies.ids),
         ]
-        date_filter = []
-        if self.date_from:
-            date_filter.append(('invoice_date', '>=', self.date_from))
-        if self.date_to:
-            date_filter.append(('invoice_date', '<=', self.date_to))
-
         supplier_invoices = self.env['account.move'].search(
-            [('move_type', 'in', ['in_invoice', 'in_refund'])] + base + date_filter
+            [('move_type', 'in', ['in_invoice', 'in_refund'])] + base
         )
         trader_invoices = self.env['account.move'].search(
-            [('move_type', 'in', ['out_invoice', 'out_refund'])] + base + date_filter
+            [('move_type', 'in', ['out_invoice', 'out_refund'])] + base
         )
         return supplier_invoices, trader_invoices
 
     # KPI
-    @api.depends('date_from', 'date_to')
+    @api.depends_context('allowed_company_ids')
     def _compute_kpi(self):
         today = fields.Date.today()
 
@@ -139,7 +123,7 @@ class VendorDebtDashboard(models.TransientModel):
             rec.po_pending    = sum(pos.mapped('amount_total'))
 
     # CHART
-    @api.depends('date_from', 'date_to')
+    @api.depends_context('allowed_company_ids')
     def _compute_chart_data(self):
         today = fields.Date.today()
 
@@ -185,18 +169,18 @@ class VendorDebtDashboard(models.TransientModel):
                 'not_due':  round(not_due, 0),
             })
 
-    # LOAD TABLE DATA
-    @api.depends('date_from', 'date_to')
-    def _compute_vendor_lines(self):
+    def _refresh_vendor_lines(self):
         today = fields.Date.today()
 
         for rec in self:
             supplier_invoices, trader_invoices = rec._fetch_invoices()
 
-            lines = []
+            rec.vendor_line_ids.unlink()
+            lines_vals = []
             for inv in (supplier_invoices + trader_invoices).sorted('invoice_date_due'):
                 partner_type = 'Nhà cung cấp' if inv.move_type in ('in_invoice', 'in_refund') else 'Tiểu thương'
-                lines.append((0, 0, {
+                lines_vals.append({
+                    'dashboard_id':     rec.id,
                     'vendor_name':      inv.partner_id.name or '',
                     'partner_type':     partner_type,
                     'invoice_ref':      inv.name or '',
@@ -205,18 +189,17 @@ class VendorDebtDashboard(models.TransientModel):
                     'invoice_date_due': inv.invoice_date_due,
                     'is_overdue':       bool(inv.invoice_date_due and inv.invoice_date_due < today),
                     'move_id':          inv.id,
-                }))
+                })
 
-            rec.vendor_line_ids = lines
+            if lines_vals:
+                self.env['vendor.debt.line'].create(lines_vals)
 
     # ACTIONS
     def action_refresh(self):
+        self._refresh_vendor_lines()
         return {
-            'type': 'ir.actions.act_window',
-            'res_model': 'vendor.debt.dashboard',
-            'res_id': self.id,
-            'view_mode': 'form',
-            'target': 'current',
+            'type': 'ir.actions.client',
+            'tag': 'reload',
         }
 
     def action_open_overdue_invoices(self):
@@ -230,6 +213,7 @@ class VendorDebtDashboard(models.TransientModel):
                 ('state', '=', 'posted'),
                 ('payment_state', 'in', ['not_paid', 'partial']),
                 ('invoice_date_due', '<', fields.Date.today()),
+                ('company_id', 'in', self.env.companies.ids),
             ],
         }
 
@@ -242,6 +226,7 @@ class VendorDebtDashboard(models.TransientModel):
             'domain': [
                 ('state', 'in', ['purchase', 'done']),
                 ('invoice_status', 'in', ['to invoice', 'nothing']),
+                ('company_id', 'in', self.env.companies.ids),
             ],
         }
 
